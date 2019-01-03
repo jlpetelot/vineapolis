@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Facture extends Model
 {
     // On met cela pour éviter les erreurs du type : Call to a member function format() on string
-    protected $dates = ['datefacture', 'created_at', 'updated-at'];
+    protected $dates = ['datefacture', 'created_at', 'updated_at'];
 
     // On permet les 14 colonnes à remplir
     protected $fillable = [
@@ -17,7 +17,6 @@ class Facture extends Model
         'email',
         'identiteunique',
         'produit',
-        'datefacture',
         'qte',
         'duree',
         'type',
@@ -27,6 +26,7 @@ class Facture extends Model
         'totalTTC',
         'user_id',
         'created_at',
+        'datefacture',
         'updated_at',
     ];
 

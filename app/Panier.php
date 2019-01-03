@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Panier extends Model
 {
+    // On met cela pour éviter les erreurs du type : Call to a member function format() on string
+    protected $dates = ['datefacture', 'created_at', 'updated_at'];
+
     // On permet les colonnes à remplir
     protected $fillable = ['user_id', 'total','created_at', 'updated_at'];
 

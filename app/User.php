@@ -12,7 +12,7 @@ class User extends Authenticatable
     use LaratrustUserTrait; // add this trait to your user model
 
     // On met cela pour éviter les erreurs du type : Call to a member function format() on string
-    protected $dates = ['datefacture', 'created_at', 'updated-at'];
+    protected $dates = ['datefacture', 'created_at', 'updated_at'];
 
     /**
      * The attributes that are mass assignable.

@@ -46,8 +46,6 @@ class VigneronVigneronsController extends BackendController
     {
         $vigneron = Vigneron::where('user_id', $id)->first();
 
-        // dd($vigneron);
-
         return view('admin.vignerons.vignerons.fiche', compact('vigneron'));
     }
 
@@ -198,7 +196,6 @@ class VigneronVigneronsController extends BackendController
                 'fiche'                 => $request->fiche,
                 'video'                 => $request->video,
                 'user_id'               => !empty($request->user_id) ? $request->user_id : NULL,
-                'product_id'            => !empty($request->product_id) ? $request->product_id : NULL,
                 'paye'                  => 0,
                 'created_at'            => Carbon::now(),
                 'updated_at'            => Carbon::now(),
@@ -2953,6 +2950,9 @@ class VigneronVigneronsController extends BackendController
             ];
         }
 
+        // On met par défaut le produit (option lisibilité et détail de votre activité) sur 1
+        $data['product_id'] = 1;
+
         if ($request->hasFile('imagereportage'))
         {
 
@@ -2975,15 +2975,20 @@ class VigneronVigneronsController extends BackendController
                     ->resize($width, $height)
                     ->save($destination . '/thumbs/' . $thumbnail);
             }
-
             $data['imagereportage'] = $fileName;
+
+            // Si il ya une image, on met le produit sur 2 (option lisibilité, détail de votre activité et reportage)
+            $data['product_id'] = 2;
         }
 
         $vigneron->update($data);
 
         $id = $vigneron->user_id;
 
-        return view('admin.vignerons.vignerons.option', compact('vigneron', 'id'));
+        // On retrouve le product
+        $product = Product::where('id', $vigneron->product_id)->first();
+
+        return view('admin.vignerons.vignerons.option', compact('vigneron', 'id', 'product'));
     }
 
     /**
@@ -2995,8 +3000,9 @@ class VigneronVigneronsController extends BackendController
     public function option ($id)
     {
         // On récupère l'identifiant unique lié à l'utilisateur/vigneron.
-
         $vigneron = Vigneron::where('user_id', $id)->first();
+
+        dd($vigneron);
 
         return view('admin.vignerons.vignerons.option', compact('vigneron'));
     }
@@ -3127,6 +3133,7 @@ class VigneronVigneronsController extends BackendController
             'video'                 => '',
             'user_id'               => $vigneron->user_id,
             'paye'                  => 0,
+            'product_id'            => NULL,
             'created_at'            => Carbon::now(),
             'updated_at'            => Carbon::now(),
         ];
@@ -3161,15 +3168,15 @@ class VigneronVigneronsController extends BackendController
     **/
     public function recapitulatif (Request $request, $id)
     {
+        // On récupère le vigneron
         $vigneron = Vigneron::where('user_id', $id)->first();
 
-        // On charge les produits
-        $produit1 = Product::where('id', 1)->first();
-        $produit2 = Product::where('id', 2)->first();
+        // On récupère le product
+        $product = Product::where('id', $vigneron->product_id)->first();
 
         $id = $vigneron->user_id;
 
-        return view('admin.vignerons.vignerons.recapitulatif', compact('vigneron', 'id', 'produit1', 'produit2'));
+        return view('admin.vignerons.vignerons.recapitulatif', compact('vigneron', 'id', 'product'));
     }
 
     /**

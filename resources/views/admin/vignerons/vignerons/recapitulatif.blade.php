@@ -30,15 +30,10 @@
                         ]) !!}
                         <br/><br/>
                         Votre commande,
-                        @if ( empty($vigneron->reportage) && empty($vigneron->video) )
-                            l'{{ $produit1->name }} pour un prix par an de <strong>25 € HT.</strong>
-                            {{ Form::hidden('produit', $produit1->name) }}
-                            {{ Form::hidden('pht', $produit1->prix) }}
-                        @elseif( !empty($vigneron->reportage) && empty($vigneron->video) )
-                            l'{{ $produit2->name }} pour un prix par an de <strong>40 € HT.</strong>
-                            {{ Form::hidden('produit', $produit2->name) }}
-                            {{ Form::hidden('pht', $produit2->prix) }}
-                        @endif
+                        l'{{ $product->name }} pour un prix par an de <strong>{{ number_format($product->prix,2,'.', '') }} € HT.</strong>
+                        {{ Form::hidden('produit', $product->name) }}
+                        {{ Form::hidden('pht', $product->prix) }}
+                       
                         <br/><br/>
                         <div class="form-horizontal pull-left">
                             <div class="form-group">

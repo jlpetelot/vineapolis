@@ -329,13 +329,13 @@ class UsersController extends BackendController
         // On récupère le loggué
         $user = User::findOrFail($id);
 
-        // On récupère tous les achats du vigneron
-        $lines = Line::where('user_id', $user->id)->orderBy('id', 'desc')->get();
+        // On récupère toutes les factures
+        $factures = Facture::where('user_id', $user->id)->orderBy('id', 'desc')->get();
 
         // On doit faire ça pour déterminer la condition d'affichage de la vue d'achats ou non
-        $line = Line::orderBy('id', 'desc')->first();
+        $compterfactures = Facture::count();
         // Si il y a des achats, on retourne la vue achats
-        if($line) return view('admin.users.achats', compact('user', 'lines'));
+        if($compterfactures > 0) return view('admin.users.achats', compact('user', 'factures'));
         // Si il n'y a aucun achat, on retourne la vue sans achats
         else return view('admin.users.pasdachats', compact('user'));
     }
@@ -374,21 +374,10 @@ class UsersController extends BackendController
         // On met diffForHumans() en locale avec la classe 
         \Carbon\Carbon::setLocale('fr');
 
-        // On récupère la ligne
-        $achat = Line::findOrFail($id);
+        // On récupère la facture
+        $facture = Facture::findOrFail($id);
 
-        // On récupère l'id du user en fonction de l'id du panier
-        $utilisateur = Line::where('id', $achat->id)->first();
-
-        // On l'applique au vigneron
-        $vigneron = Vigneron::where('user_id', $utilisateur->user_id)->first();
-
-        // On récupère l'id de la transaction
-        $pourlirejson = Paiement::where('panier_id', $achat->panier_id)->first();
-        $lire = json_decode($pourlirejson->data);
-        $charge = $lire->id;
-
-        return view('admin.users.detailsachat', compact('vigneron','achat', 'charge'));
+        return view('admin.users.detailsachat', compact('facture'));
     }
 
     /**

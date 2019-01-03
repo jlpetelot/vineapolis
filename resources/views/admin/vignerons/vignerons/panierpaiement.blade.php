@@ -4,7 +4,7 @@
 
 @section('content')
 
-<!-- Transforamtion du bouton Stripe -->
+<!-- Transformation du bouton Stripe -->
 <style>
     .stripe-button-el span {
         background: #3c8dbc!important;

@@ -38,6 +38,7 @@ class Vigneron extends Model
         'visuelfiche',
         'fiche',
         'video',
+        'product_id',
         'paye',
         'user_id',
         'created_at',

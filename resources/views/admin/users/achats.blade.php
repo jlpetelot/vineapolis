@@ -35,47 +35,51 @@
                             <table class="table table-hover"><!-- table table-hover -->
                                 <tr>
                                     <th>N°</th>
-                                    <th>Société</th>
-                                    <th>Désignation</th>
-                                    <th>Contracté le</th>
+                                    <th width="170px">Société</th>
+                                    <th width="220px">Désignation</th>
+                                    <th width="100px">Contracté le</th>
                                     <th>Durée</th>
-                                    <th>Échéance au</th>
+                                    <th width="100px">Échéance au</th>
+                                    <th width="170px">Valable du</th>
                                     <th>Moyen de paiement</th>
-                                    <th>Montant HT</th>
-                                    <th>TVA (20%)</th>
-                                    <th>Total TTC</th>
+                                    <th width="120px">Montant HT/an</th>
+                                    <th width="100px">Sous total HT</th>
+                                    <th width="100px">TVA (20%)</th>
+                                    <th width="100px">Total TTC</th>
                                     <th>Statut</th>
                                     <th width="100px" style="text-align: center">Action</th>
                                 </tr>
-                                @foreach($lines as $achat)
+                                @foreach($factures as $facture)
                                     <tr>
-                                        <td>{{ $achat->id }}</td>
-                                        <td>{{ $achat->user->name }}</td>
-                                        <td>{{ ucfirst($achat->product->name) }}</td>
-                                        <td>{{ $achat->created_at->format('j/m/Y') }}</td>
-                                        @if($achat->qte <= 1)
-                                            <td>{{ $achat->qte }} an</td>
-                                        @elseif($achat->qte > 1)
-                                            <td>{{ $achat->qte }} ans</td>
+                                        <td>{{ $facture->id }}</td>
+                                        <td>{{ $facture->name }}</td>
+                                        <td>{{ ucfirst($facture->produit) }}</td>
+                                        <td>{{ $facture->created_at->format('j/m/Y') }}</td>
+                                        @if($facture->qte <= 1)
+                                            <td>{{ $facture->qte }} an</td>
+                                        @elseif($facture->qte > 1)
+                                            <td>{{ $facture->qte }} ans</td>
                                         @endif
-                                        <td>{{ $achat-> created_at->addYear($achat->qte)->format('j/m/Y') }}</td>
-                                        @if($achat->type === 'Stripe')
+                                        <td>{{ $facture->updated_at->format('j/m/Y') }}</td>
+                                        <td>{{ $facture->datefacture->format('j/m/Y') }} au {{ $facture->updated_at->format('j/m/Y') }}</td>
+                                        @if($facture->type === 'Stripe')
                                             <td>
-                                                <img src="{{ asset('backend/img/logo-visa.svg') }}" alt="Visa" width="10%">
+                                                <img src="{{ asset('backend/img/logo-visa.svg') }}" alt="Visa" width="30%">
                                                 &nbsp;(via Stripe)
                                             </td>
-                                        @elseif ($achat->type === 'paypal')
+                                        @elseif ($facture->type === 'paypal')
                                             <td>
-                                                <img src="{{ asset('backend/img/logo-paypal.svg') }}" alt="Paypal" width="20%">
+                                                <img src="{{ asset('backend/img/logo-paypal.svg') }}" alt="Paypal" width="50%">
                                             </td>
                                         @endif
-                                        {{-- <td>@price($achat->prix)</td> --}}
-                                        <td>{{ number_format($achat->prix, 2, ',', ' ') }} €</td>
-                                        <td>{{ number_format($achat->prix * 0.2 * $achat->qte, 2, ',', ' ') }} €</td>
-                                        <td>{{ number_format($achat->prix * 1.2 * $achat->qte, 2, ',', ' ') }} €</td>
+                                        {{-- <td>@price($facture->prix)</td> --}}
+                                        <td>{{ number_format($facture->prixHT, 2, ',', ' ') }} €</td>
+                                        <td>{{ number_format($facture->soustotalHT, 2, ',', ' ') }} €</td>
+                                        <td>{{ number_format($facture->tva, 2, ',', ' ') }} €</td>
+                                        <td>{{ number_format($facture->totalTTC, 2, ',', ' ') }} €</td>
                                         <td><span class="label label-success">Confirmé</span></td>
                                         <td width="100px" style="text-align: center">
-                                            <a href="{{ route('admin.detailsachat', $achat->id) }}"
+                                            <a href="{{ route('admin.detailsachat', $facture->id) }}"
                                             class="btn btn-xs btn-default" data-toggle="tooltip" title="Détails achat">
                                                 <i class="fa fa-edit"></i>
                                             </a>

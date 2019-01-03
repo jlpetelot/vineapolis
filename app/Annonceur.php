@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Annonceur extends Model
 {
     // On met cela pour éviter les erreurs du type : Call to a member function format() on string
-    protected $dates = ['datefacture', 'created_at', 'updated-at'];
+    protected $dates = ['datefacture', 'created_at', 'updated_at'];
     
     protected $fillable = [
         'societe',

@@ -23,7 +23,7 @@
                         @if ( empty($vigneron->reportage) && empty($vigneron->video) )
                         <h4>
                             <span style="color: #dd4b39; font-weight: 600">{{ $vigneron->societe }} | </span>
-                            Vous avez choisi l'option lisibilité et détail de votre activité à 25 € par an.
+                            Vous avez choisi l'{{ $product->name }} à {{ number_format($product->prix, 2, '.', '') }} € par an.
                             <br/>Veuillez vérifier l'exactitude de ces données :
                         </h4>
                         <br/>
@@ -67,7 +67,7 @@
                         @if ( !empty($vigneron->reportage) && empty($vigneron->video) )
                         <h4>
                             <span style="color: #dd4b39; font-weight: 600">{{ $vigneron->societe }} | </span>
-                            Vous avez choisi l'option lisibilité, détail de votre activité + reportage à 40 € par an.
+                            Vous avez choisi l'{{ $product->name }} à {{ number_format($product->prix, 2, '.', '') }} € par an.
                             <br/>Veuillez vérifier l'exactitude de vos données :
                         </h4>
                         <br/>
@@ -145,8 +145,6 @@
                                   'method'    => 'PUT',
                                   'route'     => ['admin.vignerons.annulation', $id]
                             ]) !!}
-
-
                             <div class="form-horizontal">
                                 <div class="form-group">
                                     <div class="col-xs-12">

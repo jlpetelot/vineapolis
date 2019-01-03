@@ -63,17 +63,17 @@ class VigneronPaiementController extends BackendController
         $line = Line::where('user_id', $id)->first();
 
         // Si oui, on redirige vers la page annulation 406 qui décrit le paiement de trop du vigneron et on vide la carte
-        // if ($line) 
-        // {
-        //     // On récupère l'user_id du vigneron (id du user)
-        //     $id = $vigneron->user_id;
+        if ($line) 
+        {
+            // On récupère l'user_id du vigneron (id du user)
+            $id = $vigneron->user_id;
 
-        //     if ($item != NULL) {
-        //         Cart::destroy();
-        //         return view('errors.406', compact('id'));
-        //     }
-        //     else return view('errors.406', compact('id'));
-        // }
+            if ($item != NULL) {
+                Cart::destroy();
+                return view('errors.406', compact('id'));
+            }
+            else return view('errors.406', compact('id'));
+        }
         //.. !!!!!!! ON VÉRIFIE SI IL N'Y A PAS DE LINE DÉJÀ PRÉSENTE POUR LE VIGNERON !!!!!!
 
         // On tente de passer les données à Stripe
@@ -157,7 +157,9 @@ class VigneronPaiementController extends BackendController
                 'user_id'       => Auth::user()->id,
                 'qte'           => $line->qty,
                 'prix'          => $line->price,
-                'type'          => $type
+                'type'          => $type,
+                'created_at'    => \Carbon\Carbon::now(),
+                'updated_at'    => \Carbon\Carbon::now()->addYears($line->qty),
             ]);
         }
 
@@ -169,9 +171,11 @@ class VigneronPaiementController extends BackendController
 
         // La partie paiement
         $paiement = Paiement::create([
-            'panier_id' => $panier->id,
-            'data'      => json_encode($charge),
-            'type'      => $type
+            'panier_id'     => $panier->id,
+            'data'          => json_encode($charge),
+            'type'          => $type,
+            'created_at'    => \Carbon\Carbon::now(),
+            'updated_at'    => \Carbon\Carbon::now()->addYears($line->qty),
         ]);
 
         // On récupère le produit :
@@ -189,7 +193,6 @@ class VigneronPaiementController extends BackendController
             'telephone'         => !empty($vigneron->telephone) ? $vigneron->telephone : NULL,
             'identiteunique'    => $charge['id'],
             'produit'           => $produit->name,
-            'datefacture'       => \Carbon\Carbon::now(),
             'qte'               => $line->qte,
             'duree'             => $line->qte,
             'type'              => "Stripe",
@@ -197,7 +200,10 @@ class VigneronPaiementController extends BackendController
             'soustotalHT'       => number_format($line->prix * $line->qte, 2, '.', ''),
             'tva'               => number_format($line->prix * $line->qte * 0.2, 2, '.', ''),
             'totalTTC'          => number_format($line->prix * $line->qte * 1.2, 2, '.', ''),
-            'user_id'           => Auth::user()->id
+            'user_id'           => Auth::user()->id,
+            'created_at'        => \Carbon\Carbon::now(),
+            'datefacture'       => \Carbon\Carbon::now(),
+            'updated_at'        => \Carbon\Carbon::now()->addYears($line->qte),
         ]);
 
         // Une fois tout fait, on vide la carte :
@@ -228,15 +234,15 @@ class VigneronPaiementController extends BackendController
         // Si oui, on redirige vers la page annulation 406 qui décrit le paiement de trop du vigneron et on vide la carte
         if ($line) 
         {
-            // // On récupère l'user_id du vigneron (id du user)
-            // $vigneron = Vigneron::where('user_id', $id)->first();
-            // $id = $vigneron->user_id;
+            // On récupère l'user_id du vigneron (id du user)
+            $vigneron = Vigneron::where('user_id', $id)->first();
+            $id = $vigneron->user_id;
 
-            // if ($cart != NULL) {
-            //     Cart::destroy();
-            //     return view('errors.406', compact('id'));
-            // }
-            // else return view('errors.406', compact('id'));
+            if ($cart != NULL) {
+                Cart::destroy();
+                return view('errors.406', compact('id'));
+            }
+            else return view('errors.406', compact('id'));
         }
         //.. !!!!!!! ON VÉRIFIE SI IL N'Y A PAS DE LINE DÉJÀ PRÉSENTE POUR LE VIGNERON !!!!!!
 
@@ -407,11 +413,16 @@ class VigneronPaiementController extends BackendController
                     'soustotalHT'    	=> $paymentInfo->transactions[0]->amount->details->subtotal,
                     'tva'               => $paymentInfo->transactions[0]->amount->details->tax,
                     'prixTTC'    		=> $paymentInfo->transactions[0]->related_resources[0]->sale->amount->total,
-                    'user_id'           => $paymentInfo->transactions[0]->item_list->items[0]->sku
+                    'user_id'           => $paymentInfo->transactions[0]->item_list->items[0]->sku,
+                    'created_at'        => \Carbon\Carbon::now(),
+                    'updated_at'        => \Carbon\Carbon::now()->addYears($paymentInfo->transactions[0]->item_list->items[0]->quantity)
                 ];
 
                 // On enregistre un nouveau paiement PayPal dans la table paiementpaypals
                 Paiementpaypal::create($paypal);
+
+                // On récupère le dernier PayPal
+                $paypal = Paiementpaypal::orderBy('id', 'desc')->first();
 
                 // On récupère le user-id du vigneron, qui est aussi l'id du user 
                 // et on enregistre le vigneron comme payé (colonne paye de la table vignerons)
@@ -421,9 +432,11 @@ class VigneronPaiementController extends BackendController
 
                 // // On rassemble les données pour la table paniers
                 $donneespanier = [
-                    'user_id'   => $paymentInfo->transactions[0]->item_list->items[0]->sku,
-                    'total'     => $paymentInfo->transactions[0]->related_resources[0]->sale->amount->total
-                 ];
+                    'user_id'       => $paypal->user_id,
+                    'total'         => $paypal->prixTTC,
+                    'created_at'    => \Carbon\Carbon::now(),
+                    'updated_at'    => \Carbon\Carbon::now()->addYears($paymentInfo->transactions[0]->item_list->items[0]->quantity)
+                ];
 
                 // On enregistre un nouveau panier PayPal dans la table paniers
                 Panier::create($donneespanier);
@@ -431,8 +444,8 @@ class VigneronPaiementController extends BackendController
                 // On récupère le dernier id du panier enregistré que l'on appliquera à la table lines
                 $panier = Panier::orderBy('id', 'desc')->first();
 
-                // On récupère l'id du produit dans la table products que l'on appliquera à la table lines
-                $produit = Product::where('name', $paymentInfo->transactions[0]->item_list->items[0]->name)->first();
+                // On récupère le produit dans la table products que l'on appliquera à la table lines
+                $produit = Product::where('id', $vigneron->product_id)->first();
 
                 // // On rassemble les données pour la table lines
                 $line = [
@@ -441,7 +454,9 @@ class VigneronPaiementController extends BackendController
                     'user_id'       => $paymentInfo->transactions[0]->item_list->items[0]->sku,
                     'prix'          => $paymentInfo->transactions[0]->amount->details->subtotal,
                     'qte'           => $paymentInfo->transactions[0]->item_list->items[0]->quantity,
-                    'type'          => $paymentInfo->payer->payment_method
+                    'type'          => $paymentInfo->payer->payment_method,
+                    'created_at'    => \Carbon\Carbon::now(),
+                    'updated_at'    => \Carbon\Carbon::now()->addYears($paymentInfo->transactions[0]->item_list->items[0]->quantity)
                 ];
 
                 // On enregistre un nouveau line PayPal dans la table lines
@@ -452,23 +467,54 @@ class VigneronPaiementController extends BackendController
                     'panier_id'     => $panier->id,
                     'data'          => $payment,
                     'type'          => $paymentInfo->payer->payment_method,
+                    'created_at'    => \Carbon\Carbon::now(),
+                    'updated_at'    => \Carbon\Carbon::now()->addYears($paymentInfo->transactions[0]->item_list->items[0]->quantity)
                 ];
 
                 // On enregistre un nouveau paiement PayPal dans la table paiements
                 Paiement::create($paiement);
-                /*=============== ../INTÉGRATION DES DONNÉES DANS LA BDD ==============*/
 
+                // On récupère la dernière ligne :
+                $line = Line::orderBy('id', 'desc')->first();
+
+                // Création d'une facture dans la BDD
+                $facture = [
+                    'name'              => Auth::user()->name,
+                    'adresse'           => !empty($vigneron->adresse) ? $vigneron->adresse : NULL,
+                    'telephone'         => !empty($vigneron->telephone) ? $vigneron->telephone : NULL,
+                    'email'             => Auth::user()->email,
+                    'identiteunique'    => $paymentInfo->transactions[0]->invoice_number,
+                    'produit'           => $produit->name,
+                    'qte'               => $line->qte,
+                    'duree'             => $line->qte,
+                    'type'              => "paypal",
+                    'prixHT'            => number_format($line->prix, 2, '.', ''),
+                    'soustotalHT'       => number_format($line->prix * $line->qte, 2, '.', ''),
+                    'tva'               => number_format($line->prix * $line->qte * 0.2, 2, '.', ''),
+                    'totalTTC'          => number_format($line->prix * $line->qte * 1.2, 2, '.', ''),
+                    'user_id'           => $line->user_id,
+                    'created_at'        => \Carbon\Carbon::now(),
+                    'datefacture'       => \Carbon\Carbon::now(),
+                    'updated_at'        => \Carbon\Carbon::now()->addYears($line->qte),
+                ];
+                
+                // On enregistre une nouvelle facture dans la table factures
+                Facture::create($facture);
+                /*=============== ../INTÉGRATION DES DONNÉES DANS LA BDD ==============*/
+                
+                // On récupère la dernière facture
+                $facture = Facture::orderBy('id', 'desc')->first();
 
                 /*=============== ENVOI DE 2 EMAILS, 1 À L'INTÉRESSÉ ET 1 À L'ADMIN ==============*/
                 // On créé le message pour les mails
                 $message = Message::create([
-                    'name'          => Auth::user()->name,
-                    'email'         => $paymentInfo->payer->payer_info->email,
+                    'name'          => $facture->name,
+                    'email'         => $facture->email,
                     'sujet'         => "Souscription : ".ucfirst($paymentInfo->transactions[0]->item_list->items[0]->name),
                     'role'          => 'vigneron',
-                    'contenu'       => "Payé pour une durée de : ".$paymentInfo->transactions[0]->item_list->items[0]->quantity."an(s) par PayPal",
+                    'contenu'       => "Payé pour une durée de : ".$facture->duree."an(s) par PayPal",
                     'motdepasse'    => NULL,
-                    'user_id'       => $paymentInfo->transactions[0]->item_list->items[0]->sku
+                    'user_id'       => $facture->user_id
                 ]);
 
                 // Envoi de 2 emails, 1 à la personne qui a payé la transaction et 1 à l'administration du site
