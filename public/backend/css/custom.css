@@ -1,0 +1,29 @@
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+#panier .small-input {
+    width: 25px;
+    border-color: transparent!important;
+    box-shadow: inset 2px 2px 3px #ccc;
+    text-align: center;
+}
+
+.btn-secondary {
+    background-color: #f9f9f9!important;
+}
+
+/* modofié du template admin */
+.invoice {
+    position: relative;
+    background: #fff;
+    border: none;
+    padding: 20px;
+    margin: 10px 25px;
+}

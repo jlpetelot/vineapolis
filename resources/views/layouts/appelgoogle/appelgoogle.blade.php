@@ -1,0 +1,2 @@
+<!-- L'url de l'api de Google (sensor dut true permet d'utiliser la géolocalisation) -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp19-Unh1wLi0eR0LX_V5gEI6a8FUb4iY&callback=initMap" type="text/javascript"></script>

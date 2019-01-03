@@ -1,0 +1,1 @@
+<script src="{{ asset('js/cartebugey.js') }}" type="text/javascript"></script>

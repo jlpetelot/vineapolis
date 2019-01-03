@@ -1,0 +1,5204 @@
+/*---------------------------------------------------------------------------------------------*/
+/*								GÉNÉRALITÉS DES PAGES
+/* 						Résolution d'écran supérieure à 1920px
+/*---------------------------------------------------------------------------------------------*/
+
+/* importation de la font Lato de Google Font */
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+/* ../importation font Lato */
+
+html {
+    /*background-color: rgba(0,230,230,1);*/
+}
+body {
+    background-color: rgba(230,230,230,1);
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #333;
+}
+
+#connecte {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+
+a {
+  text-decoration: none;
+  color: #ccc;
+}
+a:hover {
+	text-decoration: none;
+    color: #ccc;
+    font-weight: 700!important;
+}
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+}
+h4 {
+    font-family: 'Lato', sans-serif;
+}
+.container {
+/*  padding-right: 15px;
+  padding-left: 15px;*/
+  margin-right: 0;
+  margin-left: 0;
+/*  margin-left: 299px;
+*/}
+
+/*===== ERREUR 404 ============*/
+.retouralaccueilerreur404 {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.containererreur404 {
+    margin-top: 100px;
+    text-align: center;
+}
+.containererreur404 a {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #6e0a2d;
+}
+.containererreur404 a:hover {
+    color: #949c35;
+}
+.retraiterreur {
+    margin-top: 20px;
+}
+h6 {
+    font-size: 16px;
+}
+h6.rose {
+    color: #ff00aa!important;
+}
+h6.jaune {
+    color: #fcbe00!important;
+}
+h6.vert {
+    color: #a5ab44!important;
+}
+.modal-content h6.medoc {
+    color:#f44247;
+    text-transform: uppercase;
+    padding-bottom:10px;
+}
+.modal-content h5.medoc {
+    font-size: 12px;
+    color:white;
+    text-transform: uppercase;
+    margin-bottom:7px;
+}
+.modal-content p.medoc {
+    font-size: 10px;
+    line-height: 1.1;
+}
+
+/*#connecte {*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*float: left;*/
+    /*border: #fff solid 2px;*/
+    /*margin-left: 100px;*/
+/*}*/
+
+/*-------------------------------------------------*/
+/* =  Les couleurs
+/*-------------------------------------------------*/
+.vert {
+    color: #a5ab44;
+}
+.rouge {
+    color: #990033;
+}
+.grisclair {
+    color: #999;
+}
+.grismoyen {
+    color: #666;
+}
+.grisfonce {
+    color: #333;
+}
+.blanccasse {
+    color: #ccc!important;
+}
+.jaunechampagne {
+    color: #fcbe00;
+}
+.jaunefonce {
+    color: #f39c12;
+}
+.jaunepale {
+    color: #f4d210;
+}
+section h6.jaunefonce {
+    color: #f39c12!important;
+}
+section h6.jaunepale {
+    color: #f4d210!important;
+}
+/*-------------------------------------------------*/
+/* =  Fin couleurs
+/*-------------------------------------------------*/
+
+/* Textes des fenêtres modal */
+p.retrait {
+    margin-left: 20px;
+}
+.specialtexteindex {
+    margin-top: 20px;
+}
+.specialtexteindex p,li,h3,h6 {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #ccc;
+    font-weight: 400;
+}
+.specialtexteindex h3 {
+    font-size: 24px;
+}
+.specialtexteindex h6 {
+    /*margin-bottom: 10px;*/
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #990033;
+}
+.retour10px {
+    margin-top: -10px;
+}
+
+/* MODIFIÉ DE BOOSTRAP */
+
+.alert-info {
+    color: #eeeeee!important;
+    background-color: #860043!important;
+    border-color: transparent!important;
+}
+.nav-tabs {
+    border-bottom: transparent!important;
+    width: 90%;
+}
+.nav-tabs > li > a {
+  color: #aaa!important;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    color: #000!important;
+    background-color: #efefef;
+    -moz-box-shadow: 5px 5px 5px 0 #cfcfcf;
+    -webkit-box-shadow: 5px 5px 5px 0 #cfcfcf;
+    -o-box-shadow: 5px 5px 5px 0 #cfcfcf;
+    box-shadow: 5px 5px 5px 0 #cfcfcf;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid rgba(200,200,200,0.5);
+    border-bottom-color: transparent;
+    cursor: pointer;
+}
+.nav-tabs > li > a:hover {
+    color: #000!important;
+    background-color: #efefef;
+    -moz-box-shadow: 5px 5px 5px 0 #cfcfcf;
+    -webkit-box-shadow: 5px 5px 5px 0 #cfcfcf;
+    -o-box-shadow: 5px 5px 5px 0 #cfcfcf;
+    box-shadow: 5px 5px 5px 0 #cfcfcf;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid rgba(200,200,200,0.5);
+    /*border-bottom-color: transparent;*/
+    cursor: pointer;
+}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+    background-color: #e1e1e1!important;
+    border-color: #e1e1e1!important;
+    border-bottom: none;
+}
+
+.dropdown-menu {
+  background-color: #efefef;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+    color: #999999!important;
+    background-color: #efefef!important;
+}
+.dropdown-menu > li > a {
+  color: #aaa!important;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #000000!important;
+  background-color: #ffffff!important;
+}
+.dropdown > a > .caret {
+  color: #999;
+}
+.dropdown > a:hover > .caret {
+  color: #000000;
+}
+/* ../MODIFIÉ DE BOOSTRAP */
+
+/*-------------------------------------------------*/
+/* LES BOUTONS TRANSFORMÉS DE BOOSTRAP
+/*-------------------------------------------------*/
+.btn-vert {
+  color: #fff;
+  background-color: #999;
+  border-color: transparent;
+}
+.btn-vert:hover,
+.btn-vert:focus,
+.btn-vert.focus,
+.btn-vert:active,
+.btn-vert.active,
+.open > .dropdown-toggle.btn-vert {
+  color: #fff;
+  background-color: #a5ad44;
+  border-color: transparent;
+}
+.btn-vert-vert {
+  color: #fff;
+  background-color: #a5ad44;
+  border-color: transparent;
+}
+.btn-vert-vert:hover,
+.btn-vert-vert:focus,
+.btn-vert-vert.focus,
+.btn-vert-vert:active,
+.btn-vert-vert.active,
+.open > .dropdown-toggle.btn-vert-vert {
+  color: #ccc;
+  background-color: #999;
+  border-color: #999;
+}
+.btn-vert2 {
+    color: #fff;
+    background-color: #a5ab44;
+    border-color: #a5ab44;
+}
+.btn-vert2:hover {
+    color: #fff;
+    background-color: #990033;
+    border-color: #990033;
+}
+.btn-rouge {
+  color: #fff!important;
+  background-color: #860043;
+  border-color: transparent;
+}
+.btn-rouge:hover,
+.btn-rouge:focus,
+.btn-rouge.focus,
+.btn-rouge:active,
+.btn-rouge.active,
+.open > .dropdown-toggle.btn-rouge {
+  color: #ccc;
+  background-color: #999;
+  border-color: transparent;
+}
+.btn-gris {
+  color: #ccc;
+  background-color: #630f30;
+  border-color: transparent;
+}
+.btn-rouge:hover,
+.btn-rouge:focus,
+.btn-rouge.focus,
+.btn-rouge:active,
+.btn-rouge.active,
+.open > .dropdown-toggle.btn-rouge {
+  color: #ccc;
+  background-color: #999;
+  border-color: transparent;
+}
+/*-------------------------------------------------*/
+/* ../BOUTONS TRANSFORMÉS DE BOOSTRAP
+/*-------------------------------------------------*/
+.alert-success {
+    color: #fff!important;
+    background-color: #a5ab44!important;
+    border-color: transparent!important;
+}
+/*-------------------------------------------------*/
+/* LES ALETES TRANSFORMÉES DE BOOSTRAP
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* LES ALETES TRANSFORMÉES DE BOOSTRAP
+/*-------------------------------------------------*/
+hr { 
+    height: 1px; 
+    width:100%; 
+    background-color: #a0abae;
+}
+.hr2 {
+    margin-left: -40px;
+}
+
+/* TOOLTIP MODIFIÉ DE BOOSTRAP */
+.tooltip {
+    font-family: 'Lato', sans-serif;
+}
+.tooltip.top {
+    min-width: 107px;
+}
+.tooltip.right {
+  min-width: 200px;
+  padding: 0 5px;
+  margin-left: 15px;
+}
+.tooltip.right2 {
+    min-width: 122px;
+    padding: 0 5px;
+    margin-left: 15px;
+}
+.tooltip.right .tooltip-arrow {
+  border-right-color: #a5ab44!important;
+}
+.tooltip.right2 .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    border-width: 5px 5px 5px 0;
+    border-right-color: #a5ab44!important;
+}
+.tooltip-inner {
+  color: #333333;
+  font-weight: 500;
+  text-align: left;
+  background-color: #abb146!important;
+}
+.tooltip.top .tooltip-arrow {
+  border-top-color: #abb146!important;
+}
+.tooltip.left {
+    padding: 0 5px;
+    margin-top: 40px;
+    margin-left: -87px;
+    float: left;
+}
+.tooltip-inner .left {
+    color: #efefef!important;
+    font-weight: 500;
+    background-color: #abb146!important;
+}
+.tooltip.left .tooltip-arrow {
+  top: 50%!important;
+  right: 0;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #abb146!important;
+}
+.tooltip.left2 {
+    padding: 0 5px;
+    margin-top: 3px;
+    margin-left: -165px;
+}
+.tooltip-inner .left2 {
+    color: #efefef!important;
+    font-weight: 500;
+    background-color: #abb146!important;
+}
+.tooltip.left2 .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #abb146!important;
+}
+.tooltip.left3 {
+    padding: 0 5px;
+    margin-top: 0;
+    margin-left: -260px;
+}
+.tooltip.left3 .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #abb146!important;
+}
+/* FIN TOOLTIP MODIFIÉ DE BOOSTRAP */
+
+/*-------------------------------------------------*/
+/* Graisses des fonts
+/*-------------------------------------------------*/
+.gras {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+.tresgras {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+}
+.normal {
+    font-family: 'Lato', sans-serif;
+}
+.fontlegere {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+.italique {
+    font-style: italic;
+}
+
+.tresgros {
+    font-size: 100px;
+    line-height: 1.2;
+}
+/*-------------------------------------------------*/
+/* ../Graisses des fonts
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* espaces
+/*-------------------------------------------------*/
+.centre {
+    text-align: center;
+}
+.paddingdroite {
+    color: #a0abae;
+    padding-left: 5px;
+    padding-right: 2px;
+}
+.benoitfrance {
+    color: #a0abae;
+}
+.row .rowcontenu {
+  margin-left: 100px;
+}
+.moins1px {
+    margin-top: -1px;
+}
+.moins10px {
+     margin-top: -10px;
+ }
+.moins15px {
+    margin-top: -15px;
+}
+.moins20px {
+    margin-top: -20px;
+}
+.moins10gauche {
+    margin-left: -10px;
+}
+.moins60px {
+    margin-top: -60px;
+}
+.moins25px {
+    display: block;
+    position: absolute;
+    margin-top: -25px;
+}
+.moins5px {
+    margin-top: -5px;
+}
+.plus5px {
+    margin-top: 5px;
+}
+.mb40px {
+    margin-bottom: 40px;
+}
+.plus40px {
+    margin-top: 40px;
+}
+.plus20px {
+    margin-top: 20px;
+}
+.plus58px {
+    margin-top: 58px;
+}
+.plus10px {
+    margin-top: 10px;
+}
+.plus7px {
+    margin-top: 7px;
+}
+.pad3px {
+    padding-left: 3px;
+}
+.padright5px {
+    padding-right: 5px;
+}
+.padleft5px {
+    padding-left: 5px;
+}
+.padleft6px {
+    padding-left: 6px;
+}
+.padleft10px {
+    padding-left: 10px;
+}
+.padleft8px {
+    padding-left: 8px;
+}
+.pad20px {
+    padding-left: 20px;
+}
+.pad5px {
+    padding-left: 5px;
+}
+.droite5px {
+    margin-right: 5px;
+}
+.gauche10px {
+    margin-left: 10px;
+}
+.gauche15px {
+    margin-left: 15px;
+}
+.gauche20px {
+    margin-left: 20px;
+}
+.gauche32px {
+    margin-left: 32px;
+}
+
+.floatright {
+    float: right;
+}
+.retrait0px {
+    margin-top: 0;
+}
+.retrait30px {
+    margin-top: 30px;
+}
+.retrait-30px {
+    margin-top: -30px;
+}
+.margebasse5px {
+    margin-bottom: 5px;
+}
+.margebasse40px {
+    margin-bottom: 40px;
+}
+.margebasse20px {
+    margin-bottom: 20px;
+}
+.margebasse58px {
+    margin-bottom: 58px;
+}
+.margebasse60px {
+    margin-bottom: 60px;
+}
+.margebasse70px {
+    margin-bottom: 70px;
+}
+.margebasse80px {
+    margin-bottom: 80px;
+}
+.margebasse100px {
+    margin-bottom: 100px;
+}
+.margebasse200px {
+    margin-bottom: 200px;
+}
+.margehaute10px {
+    margin-top: 10px;
+}
+.margehaute15px {
+    margin-top: 15px;
+}
+.margehaute20px {
+    margin-top: 20px;
+}
+.margehaute30px {
+    margin-top: 30px;
+}
+.margehaute40px {
+    margin-top: 40px;
+}
+.margehaute60px {
+    margin-top: 60px;
+}
+.margehaute70px {
+    margin-top: 70px;
+}
+.margehaute80px {
+    margin-top: 80px;
+}
+.margehaute100px {
+    margin-top: 100px;
+}
+.margehaute250px {
+    margin-top: 250px;
+}
+.margetreshaute195px {
+    margin-top: 195px;
+}
+/*-------------------------------------------------*/
+/* ../espaces
+/*-------------------------------------------------*/
+
+/*-----------------------------------------------------*/
+/* Les messages d'erreur des commentaires des vignerons
+/*-----------------------------------------------------*/
+.has-error {
+    color: #dd4b39;
+  }
+.form-group.has-error .form-control5 {
+    border-color: #dd4b39;
+    box-shadow: none;
+}
+.form-group.has-error .help-block {
+    color: #dd4b39;
+}
+/*-----------------------------------------------------*/
+/* ../Les messages d'erreur des commentaires des vignerons
+/*-----------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/* les carrés des cartes
+/*-------------------------------------------------*/
+.carre {
+    width: 40px;
+    height: 12px;
+}
+.rougecarrefonce {
+    background-color: #c41a1b;
+}
+.orangecarre {
+    background-color: #f8b779;
+}
+.rougeorange {
+    background-color: #cf4119;
+}
+.rougeclair {
+    background-color: #d82a2a;
+}
+.rougerouge {
+    background-color: #cf4119;
+}
+.violet {
+    background-color: #e5cbe3;
+}
+.corail {
+    background-color: #ee7e8c;
+}
+.corailfonce {
+    background-color: #d8596e;
+}
+.corailclair {
+    background-color: #f39f9b;
+}
+.espacescarres {
+    margin-bottom:8px;
+}
+
+/*-------------------------------------------------*/
+/* les carrés des cartes
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* clear
+/*------------------------------------------------- */
+.clear {
+    clear: both;
+}
+/*-------------------------------------------------*/
+/* ../clear
+/*-------------------------------------------------*
+
+/*-------------------------------------------------*/
+/* couleurs
+/*-------------------------------------------------*/
+.vert {
+    color: #a5ab44;
+}
+.rouge {
+    color: #990033;
+}
+.rose {
+    color: #ff00aa;
+}
+.rosejura {
+    color: #ec6976;
+}
+.grisclair {
+    color: #999;
+}
+.grismoyen {
+    color: #666;
+}
+.grisfonce {
+    color: #333;
+}
+.jaunechablis {
+    color: #ff9e1d;
+}
+.jaune {
+    color: #ffca1d;
+}
+.margehaute15px {
+    margin-top:15px;
+}
+.blanccasse {
+  color: #ccc!important;
+}
+/*-------------------------------------------------*/
+/* ../couleurs
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* =  LE PRELOADER
+/*-------------------------------------------------*/
+.preloader_hide { opacity:0; width:100%; }
+
+/* Preloader pour content */
+#preloader {
+  display: none;
+  position:fixed;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background-color:#333;
+}
+#preloader img {
+  display: none;
+  position:fixed;
+  left:50%;
+  top:50%;
+  width:50px;
+  height:50px;
+  margin-top:-100px;
+  margin-left:-50px;
+}
+/* Fin preloader pour content */
+
+/* Fin preloader pour content 3ème niveau */
+/*-------------------------------------------------*/
+/* =  FIN PRELOADER
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* =  LE MENU
+/*-------------------------------------------------*/
+/* customnavbar fermée */
+#customnavbar {
+	display: block;
+	float: left;
+	position: fixed;
+	background-color: #2f3133;
+	border: none !important;
+	width: 312px;
+	height: 1017px;
+	text-align: center;
+	padding: 0;
+    margin-left: -252px;
+	box-shadow: 0 0 50px #000;
+	-webkit-box-shadow: 0 0 50px #000;
+	-moz-box-shadow: 0 0 50px #000;
+	-o-box-shadow: 0 0 50px #000;
+	transition: all 0.17s ease-in-out;
+	-moz-transition: all 0.17s ease-in-out;
+	-webkit-transition: all 0.17s ease-in-out;
+	-o-transition: all 0.17s ease-in-out;
+    z-index: 100;
+}
+
+#customnavbar .navbar-default {
+	border-color: transparent!important;
+}
+
+#customnavbar .navbar-colle-agauche {
+	top: 0;
+    left: 0;
+    z-index: 100;
+}
+/* Logo */
+#customnavbar .navbar #logo {
+	position: relative;
+	margin-top: 100px;
+	min-height: 180px;
+}
+
+#menu-box {
+margin-top: 50px;
+}
+
+/* Cacher le menu */
+a.hide-menu i {
+    color: #616769;
+    font-size: 28px;
+    margin-top: 10px;
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+}
+a.hide-menu:hover i {
+    color: #a0abae;
+}
+/* Logo */
+.logo-box {
+    display: none;
+    min-height: 180px;
+    margin-top: 20px;
+}
+a.logo {
+    display: inline-block;
+    margin-bottom: 30px;
+}
+/* Le menu */
+ul.menu {
+    min-height: 490px;
+    margin-bottom: 10px;
+    padding: 0;
+    margin-right: 0;
+    text-align: center;
+    z-index: 101;
+}
+ul.menu > li {
+    list-style: none;
+    margin-bottom: 1px;
+}
+ul.menu > li > a {
+    position: relative;
+    display: inline-block;
+    padding: 14px 40px;
+    color: #a0abae;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: transparent;
+    text-decoration: none;
+    line-height: 20px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+}
+ul.menu > li > a:hover,
+ul.menu > li > a.active {
+    background: #222;
+}
+/* Les sites sociaux grands écrans */
+ul.social-icons {
+    padding: 0;
+    margin: 0 0 40px;
+    margin-right: 10px;
+}
+ul.social-icons li {
+    list-style: none;
+    display: inline-block;
+    margin-left: -2px;
+}
+#header-foot {
+    margin-top: -70px;
+}
+ul.social-icons li:first-child {
+    margin-left: 0;
+}
+ul.social-icons li a {
+    display: inline-block;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    text-decoration: none;
+    text-align: center;
+    background: #222;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+ul.social-icons li a:hover {
+    background: #222;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+}
+ul.social-icons li a i {
+    color: #fff;
+    font-size: 20px;
+    line-height: 40px;
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+}
+ul.social-icons li a.github i {
+    color: #000;
+}
+/* ../Les sites sociaux grands écrans */
+/* ../Les sites sociaux peits écrans */
+ul.petits-sociaux-icons {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+    padding-right: 30px;
+}
+ul.petits-sociaux-icons li {
+    list-style: none;
+    font-size: 18px;
+    display: inline-block;
+    padding-left: 10px;
+}
+ul.petits-sociaux-icons li a {
+    color: #333;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+ul.petits-sociaux-icons li a:hover {
+    color: #990033;
+}
+/* ../Les sites sociaux peits écrans */
+
+/* Montrer le menu */
+.show-menu {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -20px;
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+    background: #27292b;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+.show-menu {
+    position: absolute;
+    top: 450px;
+    right: 10px;
+    display: inline-block;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    width: 40px;
+    height: 40px;
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+    background: #27292b;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+.show-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+.show-menu i {
+    color: #4a4b4d;
+    font-size: 28px;
+    line-height: 42px;
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+}
+.show-menu:hover i {
+    color: #a0abae;
+}
+/* Fin customnavbar fermée */
+
+/* Customnavbar ouverte */
+#customnavbarouverte {
+    display: block;
+    float: left;
+    position: fixed;
+    background-color: #2f3133;
+    border: none !important;
+    width: 312px;
+    height: 1017px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 50px #000;
+    -webkit-box-shadow: 0 0 50px #000;
+    -moz-box-shadow: 0 0 50px #000;
+    -o-box-shadow: 0 0 50px #000;
+    transition: all 0.17s ease-in-out;
+    -moz-transition: all 0.17s ease-in-out;
+    -webkit-transition: all 0.17s ease-in-out;
+    -o-transition: all 0.17s ease-in-out;
+    z-index: 101;
+}
+.logo-box2 {
+    display: block;
+    min-height: 180px;
+    margin-top: 57px;
+    /*margin-right: 25px;*/
+}
+/* Fin customnavbar ouverte */
+/*-------------------------------------------------*/
+/* ../FIN MENU
+/*-------------------------------------------------*/
+
+/* Carte de Saumur-Champigny */
+.saumurchampigny {
+    color: #c71553;
+}
+/*-------------------------------------------------*/
+/* MENU PETITS ÉCRANS
+/*-------------------------------------------------*/
+#menupetitecran {
+    display: none;
+}
+/* MODIFIÉ DE BOOSTRAP */
+.navbar-inverse {
+    background-color: #333!important;
+    border-color: #333!important;
+    border-bottom: none!important;
+}
+.navbar-brand {
+    display: none;
+}
+.navbar-toggle {
+    float: left;
+    margin-left: 15px!important;
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 10px 10px 25px;
+}
+.navbar-collapse {
+    border-top: none!important;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #333!important;
+}
+.navbar-inverse .navbar-nav > li > a.active {
+    background-color: #272727!important;
+}
+/* ../MODIFIÉ DE BOOSTRAP */
+/*-------------------------------------------------*/
+/* ../PETITS ÉCRANS
+/*-------------------------------------------------*/
+
+/*-------------------------------------------------*/
+/* LE MODAL DU LOGIN INTERNAUTE
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/* ../LE MODAL DU LOGIN INTERNAUTE
+/*-------------------------------------------------*/
+.modal-content-internaute {
+    position:relative;
+    height:auto;
+    background-color: #ffffff;
+}
+.btn-default-internaute {
+    color: #ffffff;
+    background-color: #cccccc;
+}
+.btn-default-internaute:hover {
+    color: #ffffff;
+    background-color: #999999;
+}
+
+
+/*-------------------------------------------------*/
+/* LES MODAL DES GRANDES CARTES
+/*-------------------------------------------------*/
+#modal {
+    position:fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.6);
+}
+.modal-content {
+    position:relative;
+    height:auto;
+    background:#333;
+}
+.modal-content-tls {
+    position:relative;
+    height:auto;
+    background:#e6e6e6;
+    min-height: 940px;
+}
+/* modal-content 1er niveau */
+.modal-content h6 {
+    color:#ffcc00;
+    text-transform: uppercase;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+.modal-content h6.bourgogne {
+    color:#990033;
+}
+.modal-content h6.gcruschablis {
+    color:#ff9e1d;
+    margin-top: 40px;
+}
+.modal-content-3emeniveau-corse h6.corse {
+    text-transform: uppercase;
+    color:#b80e0c;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+h3.corse {
+    color:#b80e0c;
+}
+.modal-content p {
+    color: #e6e6e6;
+    margin:0;
+    font-size: 12px;
+    padding-bottom: 5px;
+}
+.modal-content p.bourgogne {
+    color: #e6e6e6;
+    margin:0;
+    font-size: 8px;
+    padding-bottom: 5px;
+}
+.modal-content a {
+    color: #e6e6e6;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+    text-decoration: none;
+}
+.modal-content a:hover {
+    color: #a5ab44;
+}
+.modal-content a:visited {
+    text-decoration: none;
+}
+/* ../modal-content 1er niveau */
+/* modal-content 3èmeniveau */
+.modal-content-3emeniveau {
+    position:relative;
+    min-height:900px;
+    background:#999;
+}
+.modal-content-3emeniveau-corse {
+    position:relative;
+    min-height:900px;
+    background:#c3e6fa;
+}
+.modal-content-3emeniveau h6.gcruschablis {
+    color:#ff9e1d;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+.modal-content-3emeniveau p {
+    color: #e6e6e6;
+    margin:0;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+/* ../modal-content 3èmeniveau */
+
+#modalentete {
+    background: #e6e6e6;
+    height: 60px;
+}
+.rougebourgogne {
+    color: #990033;
+    font-size: 11px;
+}
+.modal-close {
+    display:block;
+    position:relative;
+    font-size:20px;
+}
+.modal-close2 {
+    display:block;
+    position:relative;
+    margin-right: 10px;
+    float: right;
+    margin-top: 10px;
+}
+#modal:not(:target) {
+    opacity:0;
+    visibility:hidden;
+    transition:0.5s;
+}
+#modal:target {
+    opacity:1;
+    visibility:visible;
+    transition:0.5s;
+}
+.fa-times {
+    color: #a5ab44;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+.fa-times:hover {
+    color: #990033;
+}
+.fa-times-circle {
+    color: #a5ab44;
+    z-index: 1000;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+.fa-times-circle:hover {
+    color: #990033;
+}
+.testbcg {
+    background: #333;
+    width: auto;
+    height: 860px;
+    margin-right: -15px;
+}
+
+.saumurrouge {
+     color: #f90664;
+ }
+.saumurblanc {
+    color: #ffc524;
+}
+.saumurpuynotredame {
+    color: #f3997b;
+}
+.coteauxdesaumur {
+    color: #ea5153;
+}
+.cabernetdesaumur {
+    color: #f9eaac;
+}
+p.typosaumurchampigny {
+    color: #333;
+    line-height: 1.35;
+}
+.marge1 {
+    margin-right:10px;
+}
+.marge2 {
+    margin-top:-3px;
+}
+.marge3 {
+    margin-right:16px;
+}
+.marge4 {
+    margin-right:32px;
+}
+
+/* ../Carte de Saumur-Champigny /*
+/*-------------------------------------------------*/
+/* ../LES MODAL DES GRANDES CARTES
+
+
+/* La pagination transformée de boostrap */
+.pagination {
+    display: inline-block;
+    float: left;
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+.pagination > li {
+    display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px!important;
+    /*Ca a ete changé*/
+    font-family: 'Lato', sans-serif;
+    line-height: 1.42857143;
+    /*Ca a ete changé*/
+    color: #666;
+    text-decoration: none;
+    background-color: #e6e6e6;
+    /*Ca a ete changé*/
+    border: none;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    /*Ca a ete changé*/
+    color: #fff;
+    background-color: #666;
+    /*Ca a ete changé*/
+    border-color: #666;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    /*Ca a ete changé*/
+    background-color: #666;
+    /*Ca a ete changé*/
+    font-family: 'Lato', sans-serif;
+    /*Ca a ete changé*/
+    border-color: transparent;
+}
+
+/*Ca a été changé*/
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+    padding: 5px 10px;
+    margin: 0 3px 0 0;
+    font-size: 12px;
+}
+
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+/* Fin pagination transformée de boostrap */
+
+/*-------------------------------------------------*/
+/* LES MODAL CARTES GOOGLE
+/*-------------------------------------------------*/
+#modalgoogle {
+    position:fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: #e6e6e6;
+}
+.modalgoogle-content-3emeniveau {
+    position:relative;
+    height:auto;
+}
+#modalentetegoogle {
+    background: #e6e6e6;
+    height: 60px;
+}
+#modalgoogle:not(:target) {
+    opacity:0;
+    visibility:hidden;
+    transition:0.5s;
+}
+#modalgoogle:target {
+    opacity:1;
+    visibility:visible;
+    transition:0.5s;
+}
+.pchablis {
+    margin-left:400px;
+}
+
+#cartegoogle {
+    display: block;
+    margin: 0;
+    width: auto;
+    height: 840px;
+}
+.modal-footer {
+    border-top: none!important;
+}
+/*-------------------------------------------------*/
+/*../LES MODAL CARTES GOOGLE
+/*-------------------------------------------------*/
+
+
+/*-------------------------------------------------*/
+/* LES MODAL VIDÉO
+/*-------------------------------------------------*/
+#modalvideo {
+    position:fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: #e6e6e6;
+}
+.modalvideo-content-3emeniveau {
+    position:relative;
+    height:auto;
+}
+#modalentetevideo {
+    background: #e6e6e6;
+    height: 60px;
+}
+#modalvideo:not(:target) {
+    opacity:0;
+    visibility:hidden;
+    transition:0.5s;
+}
+#modalvideo:target {
+    opacity:1;
+    visibility:visible;
+    transition:0.5s;
+}
+.modal-footer {
+    border-top: none!important;
+}
+
+#video2 {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* C'est là que l'on choisit le responsive pour la vidéo youtube */
+#video2 iframe {
+    width: 1368px;
+    height: 762px;
+}
+
+/*-------------------------------------------------*/
+/*../LES MODAL CARTES GOOGLE
+/*-------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------------------------------*/
+/*								../GÉNÉRALITÉS DES PAGES
+/* 						Résolution d'écran supérieure supérieure à 1920px
+/*---------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*						Résolution d'écran supérieure supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+
+/* Les Footer de la home et du 1er niveau */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(47, 49, 51, 0.1);
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    color: #a0abae;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 30px;
+}
+#footer p {
+  color: #a0abae;
+}
+#footer p .vdf {
+  font-size: 10px;
+}
+#footer a {
+  text-decoration: none;
+  color: #a0abae;
+}
+#footer a:hover {
+  color: #ccc;
+  font-size: 14px!important;
+}
+#logobas {
+    position: relative;
+    margin-top: -4px;
+}
+#footer a.abonnes {
+color: white;
+}
+#footer a.abonnes:hover {
+color: #a5ab44;
+}
+/* ../Les Footer de la home et du 1er niveau */
+
+/* Le Footer 3ème niveau */
+#footer2 {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    color: #a0abae;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 130px;
+    z-index: 99;
+}
+#footer2 p {
+    color: #000;
+}
+#footer2 p .vdf {
+    font-size: 10px;
+}
+#footer2 p .vdf a {
+    font-size: 10px;
+    color: #9a0f3b;
+}
+#footer2 p .vdf a:hover {
+    font-size: 10px;
+    font-family: 'Lato', sans-serif;
+    color: #aaa;
+}
+.powered2 {
+    color: #666;
+}
+#footer2 a {
+    text-decoration: none;
+    color: #000;
+}
+#footer2 a.signup {
+    color: #999933;
+}
+#footer2 a:hover {
+    color: #aaa;
+    font-size: 14px!important;
+}
+#logobas {
+    position: relative;
+    margin-top: -4px;
+}
+#footer2 a.abonnes {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: #a5a944;
+}
+#footer2 a.abonnes:hover {
+    color: #aaa;
+}
+/* ../Le Footer 3ème niveau */
+
+/* Les différentes pages */
+/* Page Home */
+#pagehome {
+    background-color: #333;
+    height: 980px;
+}
+/* ../Page Home */
+/* Page Bourgogne */
+#pagebourgogne {
+    background-color: #333;
+    height: 11000px;
+}
+/* ../Page Bourgogne */
+
+/* Page Bordeaux */
+#pagebordeaux {
+    background-color: #333;
+    height: 12000px;
+}
+/* ../Page Bordeaux */
+
+/* Page Chablis */
+#pagechablis {
+    background-color: #333;
+    height: 9500px;
+}
+/* ../Page Chablis */
+/* Page Loire */
+#pageloire {
+    background-color: #333;
+    height: 25000px;
+}
+/* ../Page Loire */
+
+/* Page Médoc */
+#pagemedoc {
+    background-color: #333;
+    height: 2000px;
+}
+/* ../Page Médoc */
+
+/* Page Sud-Ouest */
+#pagesudouest {
+    background-color: #333;
+    height: 19000px;
+}
+/* ../Page Sud-Ouest */
+
+/* Les pages menus ouverts */
+#page {
+    width: 100%;
+}
+/* ../Les pages menus ouverts */
+/* ../Les différentes pages */
+
+/* Les annonceurs */
+/* généralités */
+.annonceur1 {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 60px;
+}
+.annonceur2 {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 251px;
+}
+.annonceur3 {
+	display: block;
+	position: fixed;
+	top: 238px;
+	left: 60px;
+}
+.annonceur4 {
+	display: block;
+	position: fixed;
+	top: 238px;
+	left: 251px;
+}
+.annonceur5 {
+	display: block;
+	position: fixed;
+	top: 475px;
+	left: 60px;
+}
+.annonceur6 {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 1523px;
+}
+.annonceur7 {
+	display: block;
+	position: fixed;
+	top: 238px;
+	left: 1523px;
+}
+.annonceur8 {
+	display: block;
+	position: fixed;
+	top: 476px;
+	left: 1523px;
+}
+figcaption {
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	color: #a0abae;
+	padding: 30px 0 0 40px;
+	box-sizing: border-box;
+}
+figcaption.p3emeniveau {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #333;
+    padding: 30px 0 0 40px;
+    box-sizing: border-box;
+}
+/* ../généralités */
+
+/* figcation et effet image */
+figcaption h5 {
+    text-transform: uppercase;
+}
+figure {
+	position: relative;
+}
+figure a {
+	position: absolute;
+	width: 100%;
+    height: 100%;
+	top: 0;
+	left: 0;
+}
+.effet:hover img {
+	opacity: 0.2;
+}
+.effet figcaption {
+	-webkit-transform: translateY(100px);
+	transform: translateY(100px);
+	opacity: 0;
+}
+.effet:hover figcaption {
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+	opacity: 1;
+}
+
+/* figcation et effet image */
+/*noinspection ALL*/
+.effet figcaption,
+.effet img {
+    /*noinspection CssInvalidPropertyValue,CssInvalidPropertyValue,CssInvalidPropertyValue*/
+    -webkit-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+/* ../figcation et effet image */
+
+/* animation annonceurhautgauche */
+.effet figcaption.annonceur:before {
+	content: '';
+	position: absolute;
+	border-top: solid 1px #a0abae;
+	border-bottom: solid 1px #a0abae;
+	top: 20px;
+	left: 20px;
+	right: -15px;
+	bottom: -150px;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	transition: transform 1s ease-in-out;
+}
+.effet figcaption.annonceur:after {
+	content: '';
+	position: absolute;
+	border-left: solid 1px #a0abae;
+	border-right: solid 1px #a0abae;
+	top: 20px;
+	left: 20px;
+	right: -15px;
+	bottom: -150px;
+	-webkit-transform: scale(1,0);
+	transform: scale(1,0);
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	transition: transform 1s ease-in-out;
+}
+.effet:hover figcaption.annonceur:before {
+	-webkit-transform: scale(1,1);
+	transform: scale(1,1);
+}
+.effet:hover figcaption.annonceur:after {
+	-webkit-transform: scale(1,1);
+	transform: scale(1,1);
+}
+/* ../animation annonceurhaugauche */
+
+/* animation annonceurbas */
+figcaption.annonceurbas {
+	padding: 50px 100px 150px 140px;
+}
+.effet figcaption.annonceurbas:before {
+	content: '';
+	position: absolute;
+	border-top: solid 1px #a0abae;
+	border-bottom: solid 1px #a0abae;
+	top: 30px;
+	left: 40px;
+	right: 0;
+	bottom: -180px;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	transition: transform 1s ease-in-out;
+}
+.effet figcaption.annonceurbas:after {
+	content: '';
+	position: absolute;
+	border-left: solid 1px #a0abae;
+	border-right: solid 1px #a0abae;
+	top: 30px;
+	left: 40px;
+	right: 0;
+	bottom: -180px;
+	-webkit-transform: scale(1,0);
+	transform: scale(1,0);
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	transition: transform 1s ease-in-out;
+}
+.effet:hover figcaption.annonceurbas:before {
+	-webkit-transform: scale(1,1);
+	transform: scale(1,1);
+}
+.effet:hover figcaption.annonceurbas:after {
+	-webkit-transform: scale(1,1);
+	transform: scale(1,1);
+}
+/* ../animation annonceurbas */
+
+/* Animation annonceurdroite */
+figcaption.annonceurdroite {
+	padding: 40px 100px 150px 140px;
+}
+.effet figcaption.annonceurdroite:before {
+	content: '';
+	position: absolute;
+	border-top: solid 1px #a0abae;
+	border-bottom: solid 1px #a0abae;
+	top: 20px;
+	left: 30px;
+	right: 5px;
+	bottom: 5px;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	transition: transform 1s ease-in-out;
+}
+.effet figcaption.annonceurdroite:after {
+	content: '';
+	position: absolute;
+	border-left: solid 1px #a0abae;
+	border-right: solid 1px #a0abae;
+	top: 20px;
+	left: 30px;
+	right: 5px;
+	bottom: 5px;
+	-webkit-transform: scale(1,0);
+	transform: scale(1,0);
+	-webkit-transition: -webkit-transform 1s ease-in-out;
+	transition: transform 1s ease-in-out;
+}
+.effet:hover figcaption.annonceurdroite:before {
+	-webkit-transform: scale(1,1);
+	transform: scale(1,1);
+}
+.effet:hover figcaption.annonceurdroite:after {
+	-webkit-transform: scale(1,1);
+	transform: scale(1,1);
+}
+/* ../Animation annonceurdroite */
+
+/* animation annonceurs3emeniveau */
+.effet figcaption.p3emeniveau.annonceur:before {
+    content: '';
+    position: absolute;
+    border-top: solid 1px #666;
+    border-bottom: solid 1px #666;
+    top: 20px;
+    left: 20px;
+    right: -15px;
+    bottom: -150px;
+    -webkit-transform: scale(0,1);
+    transform: scale(0,1);
+    -webkit-transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+}
+.effet figcaption.p3emeniveau.annonceur:after {
+    content: '';
+    position: absolute;
+    border-left: solid 1px #666;
+    border-right: solid 1px #666;
+    top: 20px;
+    left: 20px;
+    right: -15px;
+    bottom: -150px;
+    -webkit-transform: scale(1,0);
+    transform: scale(1,0);
+    -webkit-transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+}
+.effet:hover figcaption.p3emeniveau.annonceur:before {
+    -webkit-transform: scale(1,1);
+    transform: scale(1,1);
+}
+.effet:hover figcaption.p3emeniveau.annonceur:after {
+    -webkit-transform: scale(1,1);
+    transform: scale(1,1);
+}
+/* ../animation annonceurs3emeniveau */
+/* ../Les annonceurs */
+
+/* LE PETIT MENU */
+/* Le menu info */
+.menuinfo {
+     display: block;
+     position: fixed;
+     top: 200px;
+     left: 442px;
+     color: #666;
+     background-color: #27292b;
+     padding: 2px 0 0 5px;
+     height: 45px;
+     width: 45px;
+     border-radius: 0 20px 20px 0;
+     z-index: 99;
+ }
+.menuinfo li {
+    list-style: none;
+}
+.menuinfo i {
+    cursor: pointer;
+}
+
+.menuinfo:hover {
+    background-color: #a5ab44;
+    color: black;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.menuinfo a {
+    text-decoration: none;
+}
+.menuinfo a:hover {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/* menucarte */
+.menucarte {
+	display: block;
+	position: fixed;
+	top: 340px;
+	left: 442px;
+	color: #666;
+    font-size: 12px;
+	background-color: #27292b;
+	height: 30px;
+	min-width: 110px;
+	padding: 5px;
+	-webkit-border-radius: 0 20px 20px 0;
+	border-radius: 0 20px 20px 0;
+}
+.menucarte:hover {
+	background-color: #a5ab44;
+	padding: 5px 5px 15px 5px;
+	cursor: pointer;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+.menucarte a {
+	color: #a0abae;
+	text-decoration: none;
+}
+.menucarte a:hover {
+	color: white;
+    cursor: pointer;
+	text-decoration: none;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+/* ../menucarte */
+
+/* menuderoulant */
+#menuderoulant {
+	display: block;
+	position: fixed;
+	top: 380px;
+	left: 442px;
+	margin: 0;
+	padding: 5px 0 0 0;
+	list-style: none;
+	color: #666;
+    font-size: 12px;
+	background: #27292b;
+	height: 30px;
+	min-width: 110px;
+    z-index: 999;
+	-webkit-border-radius: 0 20px 20px 0;
+	border-radius: 0 20px 20px 0;
+}
+#menuderoulant.france {
+    margin-top:-100px;
+}
+#menuderoulant:hover {
+	background-color: #a5ab44;
+	cursor: pointer;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+#menuderoulant li {
+        padding: 0 0 50px 0;
+        position: relative;
+}
+#menuderoulant a {
+        padding: 5px;
+
+        cursor: pointer;
+        text-decoration: none;
+}
+#menuderoulant li:hover > a {
+	color: #fff;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+html #menuderoulant li a:hover{ /* IE6 */
+        color: #fff;
+}
+
+#menuderoulant li:hover > ul{
+        display: block;
+}
+#menuderoulant ul {
+    list-style: none;
+	width: auto;
+    padding: 0;
+    display: none;
+    position: absolute;
+    top: 25px;
+	left: 30px;
+    z-index: 99999;
+    background: none;
+    -webkit-border-radius: 0 20px 20px 0;
+	border-radius: 0 20px 20px 0;
+}
+
+#menuderoulant ul li {
+    margin: 0;
+    padding: 0;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+#menuderoulant ul li:last-child{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#menuderoulant ul a {
+    padding: 7px;
+    height: auto;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    float: none;
+    text-transform: none;
+	background: #27292b;
+	margin-bottom: 5px;
+	width: auto;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-border-radius: 0 20px 20px 0;
+	border-radius: 0 20px 20px 0;
+}
+#menuderoulant ul a:hover{
+	background: #a5ab44;
+	width: auto;
+}
+/* ../menuderoulant */
+
+/* menumodal */
+.menumodal {
+    display: block;
+    position: fixed;
+    top: 255px;
+    left: 442px;
+    color: #666;
+    background-color: #27292b;
+    padding: 7px 0 0 5px;
+    height: 40px;
+    width: 40px;
+    border-radius: 0 5px 5px 0;
+    z-index: 99;
+}
+.menumodal li {
+    list-style: none;
+}
+.menumodal i {
+    cursor: pointer;
+}
+.menumodal:hover {
+    background-color: #a5ab44;
+    color: black;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.menumodal a {
+    text-decoration: none;
+}
+.menumodal a:hover {
+    color: black;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/* sous-sous-menuderoulant */
+ul #sousmenuderoulant {
+    list-style: none;
+	width: auto;
+    padding: 0;
+    display: none;
+    position: absolute;
+    margin-left:-55px;
+    top: 0;
+	left: 180px;
+    z-index: 99999;
+    background: none;
+    -webkit-border-radius: 0 20px 20px 0;
+	border-radius: 0 20px 20px 0;
+}
+/* ../sous-sous-menuderoulant */
+
+/* ..menu info */
+/* ../LE PETIT MENU */
+
+/* Cartes */
+#cartes {
+    display: block;
+    position: absolute;
+	max-width: 950px;
+    margin-left: 537px;
+    margin-top: 40px;
+}
+#textecartes {
+    color: #a0abae;
+    margin-left: 90px;
+}
+#textecartes #titremap {
+    display: block;
+    position: relative;
+    margin: -60px 0 0 295px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+/* ../Cartes */
+
+/* CarteFrance */
+#francemap {
+    display: block;
+    position: fixed;
+    margin-top: 30px;
+    margin-left: 45px;
+    width: 794px;
+    height: 769px;
+}
+/* ../CarteFrance */
+
+/* CarteBordeaux */
+#bordeauxmap {
+    display: block;
+    position: fixed;
+    margin-top: 40px;
+    margin-left: 80px;
+    width: 749px;
+    height: 778px;
+}
+/* ../CarteBordeaux */
+
+/* Cartebordeauxmodal */
+#bordeauxmapmodal {
+    display: block;
+    position: absolute;
+    margin-left:100px;
+    top: -10px;
+    width: 1500px;
+    height: 908px;
+}
+/* ../Cartebordeauxmodal */
+
+
+/* CarteBourgogne */
+#bourgognemap {
+    display: block;
+    position: fixed;
+    margin-top: 40px;
+    margin-left: 80px;
+    width: 749px;
+    height: 778px;
+}
+/* ../CarteBourgogne */
+
+/* CarteBourgognemodal */
+#bourgognemapmodal {
+    display: block;
+    position: absolute;
+    top: 0;
+    left:-250px;
+    width: 1085px;
+    height: 908px;
+}
+/* ../CarteBourgognemodal */
+
+/* Cartechablis */
+#cartechablis {
+    display: block;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 734px;
+    height: 762px;
+}
+/* ../Cartechablis */
+
+/* Cartechablismodal */
+#mapmodalchablis {
+    display: block;
+    position: absolute;
+    right:100px;
+    margin-top: 20px;
+    width: 1302px;
+    height: 1090px;
+}
+/* ../Cartechablismodal */
+
+/* Carte Côte de Nuits */
+#cartecotedenuits {
+    display: block;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 734px;
+    height: 770px;
+}
+/* ../Carte Côte de Nuits */
+
+/* Cartecotedenuitsmodal */
+#mapmodalcotedenuits {
+    display: block;
+    position: absolute;
+    right:150px;
+    width: 1085px;
+    height: 908px;
+}
+/* ../Cartecotedenuitsmodal */
+
+/* Carte Côte de Beaune */
+#cotesdebeaunemap {
+    display: block;
+    position: absolute;
+    margin-top: 30px;
+    width: 734px;
+    height: 770px;
+}
+/* ../Carte Côte de Beaune */
+
+/* Carte Côte de Beaune modal */
+#mapbeaunemodal {
+    display: block;
+    position: absolute;
+    right:150px;
+    width: 1085px;
+    height: 908px;
+}
+/* ../Carte Côte de Beaune modal */
+
+/* Cartes du Sud-Ouest */
+#sudouestmap {
+    display: block;
+    position: relative;
+    left: -100px;
+    top: -50px;
+    width: 1085px;
+    height: 908px;
+}
+#sudouestmapmodal {
+    display: block;
+    left: 250px;
+    top: 50px;
+    width: 1194px;
+    height: 989px;
+}
+/* ../Cartes du Sud-Ouest */
+
+h6.cotedenuits {
+    color: #bc064c;
+    margin-bottom:15px;
+}
+h6.cotedenuits2 {
+    color: #c45395;
+    margin-bottom:15px;
+}
+p.cotedenuits {
+    margin-top:15px;
+}
+
+/* CarteChampagne */
+#champagnemap {
+    display: block;
+    position: fixed;
+    margin-top: 60px;
+    margin-left: 80px;
+    width: 800px;
+    height: 720px;
+}
+/* ../CarteChampagne */
+
+/* CarteChampagnemodal */
+#champagnemapmodal {
+    display: block;
+    position: absolute;
+    top: 0;
+    left:-300px;
+    width: 1600px;
+    height: 908px;
+}
+/* ../CarteChampagnemodal */
+
+/* CarteLoire */
+#loiremap {
+    display: block;
+    position: fixed;
+    margin-top: -60px;
+    margin-left: 40px;
+    width: 856px;
+    height: 889px;
+}
+/* ../CarteLoire */
+/* Carte Loireemodal */
+#loiremapmodal {
+    display: block;
+    position: absolute;
+    top: -90px;
+    left:200px;
+    width: 1432px;
+    height: 1120px;
+}
+/* ../Carte Loireemodal */
+
+/* Carte Médoc */
+#cartemedoc {
+    display: block;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 0;
+    width: 734px;
+    height: 762px;
+}
+/* ../Carte Médoc */
+
+/* Carte Médoc modal */
+#mapmodalmedoc {
+    display: block;
+    position: absolute;
+    margin-left: -200px;
+    margin-top:-20px;
+    width: 1085px;
+    height: 908px;
+}
+/* ../Carte Médoc modal */
+
+/* Carte des Côtes du Rhône Septentrional */
+#cotesdurhonesmap {
+    display: block;
+    position: relative;
+    margin: 60px 0 0 160px;
+    width: 689px;
+    height: 700px;
+}
+#cotesdurhonesmapmodal {
+    display: block;
+    top: -10px;
+    left: 250px;
+    width: 1085px;
+    height: 908px;
+}
+/* Fin Carte des Côtes du Rhône Septentrional */
+
+
+/* Le contenu de la page de la carte */
+section {
+	display: block;
+	position: relative;
+	padding: 0 20px;
+	margin-top: 100px!important;
+	color: #ccc;
+}
+section h6 {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #990033!important;
+}
+section h3 {
+  color: #ccc;
+}
+
+section li {
+    display: inline-block;
+    font-size: 12px;
+    margin: 10px 0 -10px 0;
+    padding: 0 5px 0 0;
+}
+section li h3 {
+    margin-left: -5px;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+section hr {
+    clear: both;
+    border: 0;
+    margin: 15px 0 0 -25px;
+}
+/* ../Le contenu de la page de la carte */
+
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*						Résolution d'écran supérieure supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 1600px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1600px) {
+
+    /* Les différentes pages */
+    /* Page Home */
+    #pagehome {
+        background-color: #333;
+        height: 2400px;
+    }
+    /* ../Page Home */
+	/* Page bourgogne */
+	#pagebourgogne {
+		height: 10400px;
+	}
+	/* ../Page bourgogne */
+    /* Page Chablis */
+    #pagechablis {
+        height: 2700px;
+    }
+    /* ../Page Chablis */
+
+    /* ../Les différentes pages */
+
+	/* Cartes */
+	#cartes {
+		max-width: 680px;
+		margin-left: 500px;
+	}
+    #francemap {
+        margin-top: 30px;
+        margin-left: 35px;
+        width: 635px;
+        height: 615px;
+    }
+    #bourgognemap {
+        margin-top: 60px;
+        margin-left: 40px;
+        width: 674px;
+        height: 700px;
+    }
+    #cartechablis {
+        margin-top: 70px;
+        margin-left: 50px;
+        width: 660px;
+        height: 686px;
+    }
+	/* ../Cartes */
+	
+	/* Les annonceurs */
+	.annonceur6 {
+		left: 1202px;
+	}
+	.annonceur7 {
+		left: 1202px;
+	}
+	.annonceur8 {
+		left: 1202px;
+	}
+	/* ../Les annonceurs */
+
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 1600px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 1400px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1400px) {
+
+    /* Les différentes pages */
+    /* Page Home */
+    #pagehome {
+        background-color: #333;
+        height: 2000px;
+    }
+    /* ../Page Home */
+    /* Page bourgogne */
+    #pagebourgogne {
+        height: 8700px;
+    }
+    /* ../Page bourgogne */
+    /* Page Chablis */
+    #pagechablis {
+        height: 2450px;
+    }
+    /* ../Page Chablis */
+    /* Les différentes pages */
+
+	/* Les annonceurs */
+	.annonceur1 img {
+		width: 50%;
+	}
+	.annonceur2 {
+		left: 156px;
+	}
+	.annonceur2 img {
+		width: 50%;
+	}
+	.annonceur3 {
+		top: 119px;
+	}
+	.annonceur3 img {
+		width: 50%;
+	}
+	.annonceur4 {
+		top: 119px;
+		left: 156px;
+	}
+	.annonceur4 img {
+		width: 50%;
+	}
+	.annonceur5 {
+		top: 238px;
+	}
+	.annonceur5 img {
+		width: 50.3%;
+	}
+	.annonceur6 {
+		top: 459px;
+		left: 60px;
+	}
+	.annonceur6 img {
+		width: 50.3%;
+	}
+	.annonceur7 {
+		top: 579px;
+		left: 60px;
+	}
+	.annonceur7 img {
+		width: 50.3%;
+	}
+	.annonceur8 {
+		top: 699px;
+		left: 60px;
+	}
+	.annonceur8 img {
+		width: 50.3%;
+	}
+	/* ../Les annonceurs */
+	figure a {
+		position: absolute;
+		width: 50%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	/* animation annonceurhautgauche */
+	figcaption h5 {
+		margin-left: -25px;
+		font-size: 10px;
+    	text-transform: none;
+	}
+	.effet figcaption.annonceur:before {
+		display: none;
+	}
+	.effet figcaption.annonceur:after {
+		display: none;
+	}
+	/* ../animation annonceurhaugauche */
+	/* animation annonceurbas */
+	.annonceurbas h5 {
+		margin-left: -75px;
+		font-size: 10px;
+    	text-transform: none;
+	}
+	.effet figcaption.annonceurbas:before {
+		display: none;
+	}
+	.effet figcaption.annonceurbas:after {
+		display: none;
+	}
+	/* ../animation annonceurbas */
+	/* animation annonceurdroite */
+	.effet figcaption.annonceurdroite:before {
+		display: none;
+	}
+	.effet figcaption.annonceurdroite:after {
+		display: none;
+	}
+	.annonceurdroite h5 {
+		margin-left: -80px;
+		font-size: 10px;
+    	text-transform: none;
+	}
+	/* ../animation annonceurdroite */
+	/* menuderoulant, menucarte, menu info*/
+	#menuderoulant, .menucarte, .menuinfo {
+		left: 253px;
+	}
+	/* ../menuderoulant, menucarte, menu info*/
+	/* Carte */
+	#cartes {
+		max-width: 1050px;
+		margin-left: 300px;
+	}
+    #francemap {
+        margin-top: 30px;
+        margin-left: 35px;
+        width: 794px;
+        height: 769px;
+    }
+    #bourgognemap {
+        margin-top: 40px;
+        margin-left: 60px;
+        width: 749px;
+        height: 778px;
+    }
+    #cartechablis {
+        margin-top: 50px;
+        margin-left: 100px;
+        width: 734px;
+        height: 762px;
+    }
+    /* ../Cartes */
+
+    /* L'apparition du menumodal */
+   .menumodal {
+       opacity: 0;
+   }
+    /* ../L'apparition du menumodal */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 1400px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+
+    /* Les différentes pages */
+    /* Page Home */
+    #pagehome {
+        background-color: #333;
+        height: 2150px;
+    }
+    /* ../Page Home */
+    /* Page bourgogne */
+    #pagebourgogne {
+        height: 11500px;
+    }
+    /* ../Page bourgogne */
+    /* Page Chablis */
+    #pagechablis {
+        height: 3000px;
+    }
+    /* ../Page Chablis */
+    /* ../Les différentes pages */
+
+	/* menuderoulant, menucarte, menu info*/
+	#menuderoulant, .menucarte, .menuinfo {
+		left: 253px;
+	}
+	/* ../menuderoulant, menucarte, menu info*/
+	/* Cartes */
+	#cartes {
+		max-width: 870px;
+		margin-left: 300px;
+	}
+    #francemap {
+        margin-top: 10px;
+        margin-left: 20px;
+        width: 719px;
+        height: 692px;
+    }
+    #bourgognemap {
+        margin-top: 100px;
+        margin-left: 0;
+        width: 674px;
+        height: 700px;
+    }
+    #cartechablis {
+        margin-top: 100px;
+        margin-left: 100px;
+        width: 587px;
+        height: 610px;
+    }
+	/* ../Cartes */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 970px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 970px) {
+
+    /* Les différentes pages */
+    /* Page Home */
+    #pagehome {
+        background-color: #333;
+        height: 2800px;
+    }
+    /* ../Page Home */
+    /* Page bourgogne */
+    #pagebourgogne {
+        height: 14000px;
+    }
+    /* ../Page bourgogne */
+    /* Page Chablis */
+    #pagechablis {
+        height: 3500px;
+    }
+    /* ../Page Chablis */
+    /* Page Médoc */
+    #pagemedoc {
+        background-color: #333;
+        height: 2400px;
+    }
+    /* ../Page Médoc */
+    /* ../Les différentes pages */
+
+	/* Cartes */
+	#cartes {
+		max-width: 450px;
+		margin-left: 300px;
+	}
+    #francemap {
+        margin-top: 10px;
+        margin-left: 20px;
+        width: 647px;
+        height: 623px;
+    }
+    #textecartes #titremap {
+        display: none;
+    }
+    #bourgognemap {
+        margin-top: 40px;
+        margin-left: 0;
+        width: 607px;
+        height: 630px;
+    }
+    #cartechablis {
+        margin-top: 80px;
+        margin-left: 20px;
+        width: 587px;
+        height: 610px;
+    }
+	/* ../Cartes */
+	#footer {
+		display: none;
+	}
+    /* menumodal */
+    .menumodal{
+        opacity: 0;
+    }
+    /* ../menumodal */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 970px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 750px) {
+
+    /* Les différentes pages */
+    /* Page Home */
+    #pagehome {
+        background-color: #333;
+        height: 2900px;
+    }
+    /* ../Page Home */
+    /* Page bourgogne */
+    #pagebourgogne {
+        height: 14500px;
+    }
+    /* ../Page bourgogne */
+    /* Page Chablis */
+    #pagechablis {
+        height: 3800px;
+    }
+    /* ../Page Chablis */
+    /* ../Les différentes pages */
+
+	/* Cartes */
+	#cartes {
+		max-width: 430px;
+		margin-left: 210px;
+	}
+    #francemap {
+        margin-top: 10px;
+        margin-left: -30px;
+        width: 582px;
+        height: 561px;
+    }
+    #textecartes #titremap {
+        display: none;
+    }
+    #bourgognemap {
+        margin-top: 40px;
+        margin-left: -40px;
+        width: 607px;
+        height: 630px;
+    }
+    #cartechablis {
+        margin-top: 80px;
+        margin-left: 0;
+        width: 502px;
+        height: 521px;
+    }
+	/* ../Cartes */
+	
+	/* Les annonceurs */
+	.annonceur1  {
+		top: 50px;
+		left: 0;
+	}
+	.annonceur1 img  {
+		width: 45%;
+	}
+	.annonceur2 {
+		top: 50px;
+		left: 86px;
+	}
+	.annonceur2 img  {
+		width: 45%;
+	}
+	.annonceur3 {
+		top: 157px;
+		left: 0;
+	}
+	.annonceur3 img  {
+		width: 45%;
+	}
+	.annonceur4 {
+		top: 157px;
+		left: 86px;
+	}
+	.annonceur4 img  {
+		width: 45%;
+	}
+	.annonceur5 {
+		top: 264px;
+		left: 0;
+	}
+	.annonceur5 img  {
+		width: 45%;
+	}
+	.annonceur6 {
+		top: 462px;
+		left: 0;
+	}
+	.annonceur6 img  {
+		width: 45%;
+	}
+	.annonceur7 {
+		top: 569px;
+		left: 0;
+	}
+	.annonceur7 img  {
+		width: 45%;
+	}
+	.annonceur8 {
+		top: 676px;
+		left: 0;
+	}
+	.annonceur8 img  {
+		width: 45%;
+	}
+	figcaption.annonceur h5 {
+		margin-left: -33px;
+	}
+	figcaption.annonceurbas h5 {
+		margin-top: 40px;
+		margin-left: -110px;
+	}
+	figcaption.annonceurdroite h5 {
+		margin-top: 10px;
+		margin-left: -110px;
+	}
+	.effet figcaption {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 0;
+	}
+	.effet:hover figcaption {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
+	/* ../Les annonceurs */
+	/*	Le menu */
+	#customnavbar {
+		display: none;
+	}
+	/*	..Le menu */
+	/* menuderoulant, menucarte */
+	#menuderoulant, .menucarte {
+		display: none;
+	}
+	/* ../menuderoulant, menucarte */
+    /* menu info, menu modal */
+    .menuinfo {
+        opacity: 0;
+    }
+    .menumodal{
+        opacity: 0;
+    }
+    /* ..//* menu info, menu modal */
+	/*	Le menu petits écrans */
+	#menupetitecran {
+		display: block;
+	}
+}
+	/*	../Le menu petits écrans */
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution minmale 300px et maximale 749px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 650px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 650px) {
+
+    /* Les différentes pages */
+	/* Page bourgogne */
+	#pagebourgogne {
+		height: 15500px;
+	}
+	/* ../Page bourgogne */
+    /* Page Home */
+    #pagehome {
+        background-color: #333;
+        height: 3000px;
+    }
+    /* ../Page Home */
+    /* ../Les différentes pages */
+
+    /* Cartes */
+	#cartes {
+		max-width: 400px;
+		margin-left: 190px;
+	}
+    #francemap {
+        margin-top: 10px;
+        margin-left: -30px;
+        width: 582px;
+        height: 561px;
+    }
+    #textecartes #titremap {
+        display: none;
+    }
+    #bourgognemap {
+        margin-top: 40px;
+        margin-left: -40px;
+        width: 546px;
+        height: 567px;
+    }
+    #cartechablis {
+        margin-top: 60px;
+        margin-left: 15px;
+        width: 452px;
+        height: 469px;
+    }
+    /* ../Cartes */
+    /* menu info */
+    .menuinfo {
+        left: 0;
+    }
+    /* ../menu info */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 650px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution minmale 300px et maximale 599px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (min-width: 300px) and (max-width: 599px) {
+
+    /* Les différentes pages */
+  /* Page Bourgogne */
+	#pagebourgogne {
+		height: 15500px;
+	}
+    /* ../Page Bourgogne */
+    /* Page Home */
+    #pagehome {
+        background-color: #333;
+        height: 3000px;
+    }
+    /* ../Page Home */
+    /* ../Les différentes pages */
+
+	/* Les annonceurs */
+	.annonceur1,
+	.annonceur2,
+	.annonceur3,
+	.annonceur4,
+	.annonceur5,
+	.annonceur6,
+	.annonceur7,
+	.annonceur8 {
+		display: none;
+	}
+	/* ../Les annonceurs */
+	
+	/* menuderoulant, menucarte, menu info*/
+	#menuderoulant, .menucarte, .menuinfo {
+		display: none;
+	}
+	/* Cartes */
+	#cartes {
+		max-width: 380px;
+		margin-left: 20px;
+	}
+    #francemap {
+        margin-top: 10px;
+        margin-left: -40px;
+        width: 466px;
+        height: 480px;
+    }
+    #bourgognemap {
+        margin-top: 40px;
+        margin-left: -50px;
+        width: 491px;
+        height: 510px;
+    }
+	/* ../Cartes */
+    /* menu info */
+    .menuinfo {
+        left: 0;
+        top:400px;
+    }
+    /* ../menu info */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution minmale 300px et maximale 599px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LES PAGES DE 3ÈME NIVEAU
+/*						Résolution d'écran supérieure supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+/* La présence des icônes sociaux pour les petits écrans */
+#presenceicons {
+    display: none;
+}
+/* ../La présence des icônes sociaux pour les petits écrans */
+/* Visibilité du menu ouvert */
+#menuouvert {display: none}
+/* ../Visibilité du menu ouvert */
+
+#carte3emeniveau {
+    padding-right: 20px;
+}
+
+
+.cadrefermer3emeniveau {
+    height: 60px;
+    background-color: #e6e6e6;
+}
+.emballage3emeniveau {
+    margin-top: -30px;
+    padding: 20px;
+    margin-bottom: 100px;
+}
+.visibilitecartegoogle {
+    display: none;
+}
+.cadrefermer3emeniveau h3 {
+    display: block;
+    position: absolute;
+    margin-top: 15px;
+    font-weight: 700;
+    margin-left: 20px;
+    color: #a5ac43;
+}
+.cadrefermer3emeniveau p {
+    display: block;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 575px;
+    font-size: 12px;
+}
+/* Textes des fenêtres modal */
+.modal2p {
+    margin: 10px 0 0 -10px;
+    padding: 0;
+}
+.modal2p p,li,h3,h6 {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: #666;
+    font-weight: 400;
+}
+.modal2p h3 {
+    font-size: 24px;
+}
+.modal2p h6 {
+    margin-bottom: 10px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #990033;
+}
+.modal2p h6.special {
+    margin-top: 0;
+}
+/* Fin textes des fenêtres modal */
+
+/* Le contenu de 3ème niveau */
+.cadreblanc {
+    display: block;
+    position: absolute;
+    background-color: rgba(230,230,230,1);
+    width: 1192px;
+    height: 953px;
+    margin-left: 512px;
+    margin-top: 0;
+}
+.cadrecarte1 {
+    display: block;
+    position: relative;
+    text-align: left;
+    margin: 0;
+    margin-top: 20px;
+    padding: 0;
+}
+.cadrecarte1 .carte {
+    margin-top: 35px;
+    width: 100%;
+}
+.cadrecarte1 .carte {
+    margin-top: 35px;
+    width: 100%;
+}
+.cadrecarte1 img {
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 3px 3px 15px #999;
+}
+.textetitre {
+    color: #666;
+}
+.textetitre h3 {
+    color: #666;
+    margin-top: 40px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+}
+.soustitre h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #666;
+}
+li h5 {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+.commentaires .textetitre {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+/*.lamargeduhautdesonglets {*/
+/*margin-top: 10px;*/
+/*}*/
+.loupe {
+    margin-left: 135px;
+    margin-top: -7px;
+}
+.loupe img {
+    width: 100%;
+}
+.loupe3emeniveau {
+    display: block;
+    position: relative;
+    float: right;
+    margin-top: -55px;
+}
+.loupe3emeniveau img {
+    width: 75%;
+    padding: 5px;
+    -moz-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -webkit-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -o-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+}
+.textetitre2 {
+    margin-top: 30px;
+}
+.textetitre2 h3 {
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    color: #666;
+    font-size: 24px;
+}
+.textetitre3 {
+    margin-top: 25px;
+}
+.cadrecarte2  {
+    margin-top:-890px;
+    margin-left: 595px;
+    display: block;
+    position: absolute;
+    width: 100%;
+    padding: 20px 20px 20px 0;
+    text-align: left;
+}
+.cadrecarte2 img {
+    display: block;
+    padding: 5px 0 10px 0;
+    position: relative;
+    width: 100%;
+}
+.loupe2 {
+    display: block;
+    position: absolute;
+    margin: 30px 0 0 300px;
+}
+.loupe2 img {
+    width: 350px;
+    height: 43px;
+}
+/* LES COMMENTAIRES POUR LES ONGLETS */
+.commentairesonglets  {
+    margin: -10px 0 10px 0;
+    padding: 40px 0 0 0;
+    color: #333;
+}
+.commentairesonglets p  {
+    color: #333;
+}
+.commentairesonglets li {
+    display: inline-block;
+    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+}
+.commentairesonglets h5 {
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+.index p,h3,span {
+    font-family: 'Lato', sans-serif;;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+}
+.fa-user,.fa-calendar {
+    color: #333;
+}
+/* FIN COMMENTAIRES POUR LES ONGLETS */
+.commentaires2 {
+    display: block;
+    position: relative;
+    margin-left: -22px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.commentaires2 li {
+    display: inline-block;
+    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+    margin: 10px 0 -10px 0;
+    padding: 0 5px 0 0;
+}
+.commentaires2 li h3 {
+    margin-left: -5px;
+    font-size: 24px;
+    font-family: 'Lato', sans-serif;
+}
+.voirlesite {
+    display: none;
+}
+/* La barre de recherche */
+.rond-gauche {
+    border-radius: 30px 0 0 30px;
+}
+.rond-droit {
+    border-radius: 0 30px 30px 0;
+}
+.rond {
+    border-radius: 30px;
+}
+.recherche h3  {
+    color: #666;
+    font-weight: 700;
+    font-size: 24px;
+}
+.recherche p.sans  {
+    color: #999;
+}
+.recherche a {
+    color: #333;
+    opacity: 1!important;
+}
+.recherche a:hover {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #333;
+}
+.recherche a:visited {
+    border-bottom: none;
+}
+.margerecherche {
+    margin-top: -2px;
+    margin-bottom: 60px;
+}
+.barrederecherche {
+    display: block;
+    position: absolute;
+    width: 80%;
+    margin-left: 1130px;
+    margin-top: 4px;
+    z-index: 100;
+}
+.barrederecherche a {
+    opacity: 0.5;
+}
+.barrederecherche a:hover {
+    opacity: 1;
+}
+.form-control3 {
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: #666;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+.form-control3:focus {
+    /*border-color: #fff;
+    background-color: #630f30;*/
+    font-family: 'Lato', sans-serif;
+    color: #666;
+    border-color: #fff;
+    background-color: rgba(230,230,230,1);
+    outline: 0;
+    box-shadow: 2px 2px 3px 1px #ccc inset;
+}
+.form-control3::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+.form-control3:-ms-input-placeholder {
+    color: #ccc;
+}
+.form-control3::-webkit-input-placeholder {
+    font-family: 'Lato', sans-serif;
+    color: #ccc;
+}
+.fa-desktop {
+    opacity: 1;
+}
+/* Fin barre de recherche */
+
+/* La barre de recherche de tous les vins */
+.avatar img {
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+.img-raised {
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+#visuelcbc {
+    position: relative;
+}
+.visuelcbc {
+    position: absolute;
+    margin-top:-80px;
+}
+
+#detailgooglemap {
+    position: relative;
+}
+#detailgooglemap .detailgooglemap {
+    position: absolute;
+    margin-top: -130px;
+    margin-left: 20px;
+}
+.recherche {
+    width: 100%;
+    margin-top: 45px;
+}
+.recherche a {
+    opacity: 0.5;
+}
+.recherche a:hover {
+    opacity: 1;
+}
+.form-control2 {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: #666;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+.form-control2:focus {
+    /*border-color: #fff;
+    background-color: #630f30;*/
+    font-family: 'Lato', sans-serif;
+    color: #666;
+    border-color: #fff;
+    background-color: rgba(230,230,230,1);
+    outline: 0;
+    box-shadow: 2px 2px 3px 1px #ccc inset;
+}
+.form-control2::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+.form-control2:-ms-input-placeholder {
+    color: #ccc;
+}
+.form-control2::-webkit-input-placeholder {
+    font-family: 'Lato', sans-serif;
+    color: #ccc;
+}
+.input-group {
+    margin-top: 3px!important;
+    margin-bottom: 25px!important;
+}
+.input-group-btn button {
+    color: #fff;
+    opacity: 1;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+.input-group-btn button:hover {
+    color: #990033;
+    opacity: 1;
+}
+.reportage {
+    float: right;
+}
+a:hover .sitemodal {
+    width: 110%;
+    border-bottom: 2px solid;
+}
+/* Modifié de Boostrap */
+.btn-default {
+    background-color: #666;
+}
+.btn-default2 {
+    background-color: #999;
+}
+
+/* Fin barre de recherche de tous les vins */
+
+a img.btndetail {
+    cursor: pointer;
+}
+.cadreblanc3emeniveau2 {
+    display: block;
+    position: relative;
+    width: 1178px;
+    margin-left: 519px;
+    padding: 0;
+    margin-top: 15px;
+    z-index: 10;
+}
+.fa-eye {
+    display: block;
+    position: relative;
+    font-size: 38px!important;
+    color: #666;
+    padding: 0 2px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 7px;
+    -moz-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -webkit-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -o-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+.fa-eye:hover {
+    color: #a5ab44;
+}
+.fa-search {
+    display: block;
+    position: relative;
+    font-size: 38px!important;
+    color: #666;
+    padding: 0 2px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 7px;
+    -moz-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -webkit-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -o-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+.fa-search2 {
+    display: block;
+    position: relative;
+    font-size: 38px!important;
+    color: #666;
+}
+.fa-search:hover {
+    color: #a5ab44;
+}
+
+.fa-map-marker.grand {
+    display: block;
+    position: relative;
+    font-size: 38px!important;
+    color: #666;
+    padding: 5px 13px;
+    float: right;
+    margin-top: -40px;
+    margin-right: 15px;
+    -moz-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -webkit-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -o-box-shadow: 3px 3px 10px 0 #c0c0c0;
+    box-shadow: 3px 3px 10px 0 #c0c0c0;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.fa-map-marker.grand:hover {
+    color: #a5ab44;
+}
+/* Les annonceurs */
+.a3emeniveau1 {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 312px;
+    z-index: 10;
+    border-right: solid 10px #333;
+}
+.a3emeniveau2 {
+    display: block;
+    position: fixed;
+    top: 238px;
+    left: 312px;
+    z-index: 10;
+    border-right: solid 10px #333;
+}
+.a3emeniveau3 {
+    display: block;
+    position: fixed;
+    top: 476px;
+    left: 312px;
+    z-index: 10;
+    border-right: solid 10px #333;
+}
+.a3emeniveau4 {
+     display: block;
+     position: fixed;
+     top: 714px;
+     left: 312px;
+    z-index: 10;
+    border-right: solid 10px #333;
+}
+.a3emeniveau5 {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 1705px;
+    border-left: solid 10px #333;
+}
+.a3emeniveau6 {
+    display: block;
+    position: fixed;
+    top: 238px;
+    left: 1705px;
+    border-left: solid 10px #333;
+}
+.a3emeniveau7 {
+    display: block;
+    position: fixed;
+    top: 476px;
+    left: 1705px;
+    border-left: solid 10px #333;
+}
+.a3emeniveau8 {
+    display: block;
+    position: fixed;
+    top: 714px;
+    left: 1705px;
+    border-left: solid 10px #333;
+}
+/* Les annonceurs */
+
+/* ../Les cartes du 3ème niveau */
+
+/* Les displays pour les cartes supérieurs à 1200px */
+.enplus {
+     display: block;
+}
+.mapecran {
+    display: block;
+}
+/* ../Les displays pour les cartes supérieurs à 1200px */
+
+/* Carte chalonnaise */
+#francemapchalon {
+    display: block;
+    margin-top:-10px;
+    margin-left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte chalonnaise */
+
+/* Carte mâconnaise */
+#francemapmacon {
+    display: block;
+    margin-top:-10px;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte mâconnaise */
+
+/* Carte beujolaise */
+#francemapbeaujolais {
+    display: block;
+    margin-top: -10px;
+    margin-left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte mâconnaise */
+
+/* Carte Margaux */
+#mapmargaux {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Margaux */
+
+/* Carte Pessac-Leognan */
+#mappessacleognan {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Pessac-Leognan */
+
+/* Carte Pomerol */
+#mappomerol {
+    display: block;
+    margin-left: -80px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Pomerol */
+
+/* Carte Saint-Emilion */
+#mapsaintemilion {
+    display: block;
+    margin-top: 80px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Saint-Emilion */
+
+/* Carte Sauternes-Barsac */
+#mapsauternesbarsac {
+    display: block;
+    left: -300px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Sauternes-Barsac  */
+
+/* Carte Pauillac */
+#mappauillac {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Pauillac  */
+
+/* Carte Moulis et Listrac */
+#mapmoulislistrac {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Moulis et Listrac */
+
+/* Carte Saint-Estèphe */
+#mapsaintestephe {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Saint-Estèphe */
+
+/* Carte Saint-Julien */
+#mapsaintjulien {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Saint-Julien */
+
+/* Carte aloxe-carton */
+#mapaloxecarton {
+    display: block;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte aloxe-carton */
+
+/* Carte beaune */
+#mapbeaune {
+    display: block;
+    margin-top:-10px;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte beaune */
+
+/* Carte Chassagne-Montrachet */
+#mapchassagne {
+    display: block;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Chassagne-Montrachet */
+
+/* Carte Puligny-Montrachet */
+#mappuligny {
+    display: block;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Puligny-Montrachet */
+
+/* Carte Pommard */
+#mappommard {
+    display: block;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Pommard */
+
+/* Carte Volnay */
+#mapvolnay {
+    display: block;
+    margin-top:-10px;
+    margin-left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Volnay */
+
+/* Carte Chambolle-Musigny */
+#mapchambollemusigny {
+    display: block;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Chambolle-Musigny */
+
+/* Carte Gevrey-Chambertin */
+#mapgevreychambertin {
+    display: block;
+    margin-top:-40px;
+    margin-left: 150px;
+    width: 1280px;
+    height: 935px;
+}
+/* Fin carte Gevrey-Chambertin */
+
+.rougegevrey {
+    color: #990033;
+}
+
+/* Carte Nuits-Saint-Georges */
+#mapnuits {
+    display: block;
+    margin-left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Nuits-Saint-Georges */
+
+/* Carte Vosne-Romanée */
+#mapvosneromanee {
+    display: block;
+    margin-left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Vosne-Romanée */
+
+/* Carte Vougeot */
+#mapvougeot {
+    display: block;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Vougeot */
+
+/* Carte Grands Crus de Chablis */
+#mapgdschablis {
+    display: block;
+    margin-left: 0;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Grands Crus de Chablis */
+
+/* Carte des champagnes des Montagnes de Reims et Côte des Blancs */
+#montagne {
+    display: block;
+    margin-left: -200px;
+    width: 1400px;
+    height: 908px;
+}
+/* ../Carte des champagnes des Montagnes de Reims et Côte des Blancs */
+
+/* Carte des Champagnes de la Vallee de la Marne */
+#valleemarnemodal {
+    display: block;
+    margin-left: 250px;
+    width: 1900px;
+    height: 600px;
+}
+
+span .marne {
+    margin-left:20px;
+}
+/* Fin carte des Champagnes de la Vallee de la Marne */
+
+/* Carte de la Corse */
+#mapcorse {
+    display: block;
+    margin-left: 0;
+    width: 1400px;
+    height: 908px;
+}
+/* Fin carte de la Corse */
+
+/* Carte des vins d'Alsace */
+#alsacemapmodal {
+    margin-left:-450px;
+    display: block;
+    width: 1149px;
+    height: 908px;
+}
+.alsacecouleur {
+    color: #f29100;
+}
+h6.couleuralsace {
+    margin-top:20px;
+    color: #f29100;
+    text-align: left;
+}
+p.fontalsace {
+    font-size: 10px;
+    line-height: 1.3;
+    text-align: left;
+}
+p.font2alsace {
+    font-size: 10px;
+    line-height: 1.2;
+    text-align: left;
+}
+/* Fin carte des vins d'Alsace */
+
+
+/* Carte de Pouilly */
+#pouillymapmodal {
+    display: block;
+    margin-left:-200px;
+    width: 1149px;
+    height: 908px;
+}
+/* Fin carte de Pouillys */
+
+/* Carte des vins d'Auvergne */
+#auvergnemapmodal {
+    display: block;
+    margin-left: 350px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins d'Auvergne */
+
+/* Carte des vins de Bugey */
+#bugeymapmodal {
+    display: block;
+    margin-left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins de Bugey */
+
+/* Carte des vins de Saumur-Champigny */
+#saumurmapmodal {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins de Saumur-Champigny */
+
+/* Carte des vins de Pouilly */
+#pouillymapmodal {
+    display: block;
+    margin-left: 85px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins de Pouilly */
+
+/* Carte des vins de Sancerre */
+#sancerremapmodal {
+    display: block;
+    margin-left: 300px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins de Sancerre */
+
+/* Carte des vins de Quincy et de Reuilly */
+#quincyreuillymapmodal {
+    display: block;
+    margin-left: -150px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins de Quincy et de Reuilly */
+
+/* Carte des vins de Savoie */
+#savoiemapmodal {
+    display: block;
+    margin-left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins de Savoie */
+
+/* Carte des vins de Saint-Peray et Cornas */
+#saintperaycornasmodal{
+    display: block;
+    left: 150px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des vins de Saint-Peray et Cornas */
+
+/* Carte des Côtes du Rhône Méridional */
+#cotesdurhonemerimapmodal{
+    display: block;
+    margin-left: 100px;
+    top:-35px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte des Côtes du Rhône Méridional */
+
+/* Carte du Jura */
+#juramapmodal{
+    display: block;
+    left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+.couleurjura {
+    color: #ee7f4f;
+}
+/* Fin carte du Jura */
+
+/* Carte du Vins du Languedoc-Roussillon*/
+#languedocroussillonmapmodal{
+    display: block;
+    left: 300px;
+    width: 1150px;
+    height: 908px;
+}
+
+.couleurancio {
+    color: #b9320e;
+}
+.rancioclair {
+    color: #df8200;
+}
+.rougesombre {
+    color: #79143d;
+}
+/* Carte des Vins de Provence*/
+#provencemapmodal {
+    display: block;
+    top: -20px;
+    left: 250px;
+    width: 1323px;
+    height: 1044px;
+}
+/* Fin carte des Vins de Provence */
+
+/* Carte du Vin de l'Aveyron */
+#aveyronmapmodal {
+    display: block;
+    top: -5px;
+    left: 200px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte Vin de l'Aveyron */
+
+/* Fin carte des eaux-de-vie d'Armagnac */
+#armagnacmapmodal {
+    display: block;
+    margin-left: 200px;
+    width: 1437px;
+    height: 1135px;
+}
+/* Fin carte des eaux-de-vie d'Armagnac */
+
+/* Carte du Cognac */
+#cognacmapmodal {
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte du Cognac  */
+
+/* Fin carte de la Lorraine */
+#lorrainemapmodal {
+    display: block;
+    margin-left: 250px;
+    width: 1150px;
+    height: 908px;
+}
+/* Fin carte dde la Lorraine */
+.rosegris {
+    color: #bf2bff;
+}
+
+/* Carte de Margaux */
+#mapmargaux {
+    left: -300px;
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+.rougemargaux {
+    color: #8d0355;
+}
+/* Fin carte de Margaux  */
+
+/* Carte de Moulis et Listrac */
+#mapmoulislistrac {
+    left: -300px;
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+.rougemoulislistrac {
+     color: #cc0033;
+ }
+.rougelistrac {
+    color: #ff3366;
+}
+/* Fin Carte de Moulis et Listrac  */
+
+/* Carte de Pauillac */
+#mappauillac {
+    left: -300px;
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+.rougepauillac {
+    color: #e02d60;
+}
+/* Fin Carte de Pauillac  */
+
+/* Carte de Saint-Estèphe */
+#mapsaintestephe {
+    left: -250px;
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+.rougesaintestephe {
+    color: #ae154a;
+}
+/* Fin Carte de Saint-Estèphe  */
+
+/* Carte de Saint-Julien */
+#mapsaintjulien {
+    left: -250px;
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+.rougesaintjulien {
+    color: #931438;
+}
+/* Fin Carte de Saint-Julien  */
+
+/* Carte de Pessac-Léognan */
+#mappessacleognan {
+    left: -250px;
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+.rougepessacleognan {
+    color: #cb0767;
+}
+.grispessacleognan {
+    color: #333;
+}
+/* Fin Carte de Pessac-Léognan  */
+
+/* Carte de Pomerol */
+#mappomerol {
+    left: -250px;
+    display: block;
+    width: 1150px;
+    height: 908px;
+}
+.rougepomerol {
+    color: #931438;
+}
+/* Fin Carte de Pomerol  */
+
+
+
+/* Les textes */
+.textes3emeniveau  {
+    color: #333;
+}
+.textes3emeniveau h6  {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.textes3emeniveau h6.chablis  {
+    color: #ff9e1d;
+}
+.textes3emeniveau h6.marnetitre {
+    color: #b04190;
+}
+.textes3emeniveau h6.sancerre {
+    color: #c50051;
+}
+.textes3emeniveau h6.menetou {
+    color: #960648;
+}
+.textes3emeniveau h6.quincy {
+    color: #fccc00;
+}
+.rosechampagne {
+    color: #b04190;
+}
+p.valleedelamarne {
+    font-size: 10px;
+}
+/* ../Les textes */
+/* ../Les cartes du 3ème niveau */
+
+/*------------------------------------------------------------------------------------------*/
+/* 											../LES PAGES DE 3ÈME NIVEAU
+/*						Résolution d'écran supérieure à 1920px
+/*------------------------------------------------------------------------------------------*
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1800px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1800px) {
+
+    /* La page */
+    .cadreblanc3emeniveau2 {
+        max-width: 1050px;
+    }
+    /* ../La page */
+    /* Les annonceurs */
+    .a3emeniveau5,
+    .a3emeniveau6,
+    .a3emeniveau7,
+    .a3emeniveau8 {
+        left: 1582px;
+    }
+    /* ../Les annonceurs */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1800px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1600px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1600px) {
+
+    /* La page */
+    .cadreblanc3emeniveau2 {
+        max-width: 850px;
+        height: 1400px;
+    }
+    /* ../La page */
+    /* Les annonceurs */
+    .a3emeniveau5,
+    .a3emeniveau6,
+    .a3emeniveau7,
+    .a3emeniveau8 {
+        left: 1381px;
+    }
+    /* ../Les annonceurs */
+
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1600px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1400px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1400px) {
+
+    /* La page */
+    .cadreblanc3emeniveau2 {
+        max-width: 945px;
+        height: 1400px;
+        margin-left: 419px;
+    }
+    /* ../La page */
+
+    /* La suppression de l'oeil pour voir la carte */
+    /* Les annonceurs */
+    .a3emeniveau1,
+    .a3emeniveau2,
+    .a3emeniveau3,
+    .a3emeniveau4,
+    .a3emeniveau5,
+    .a3emeniveau6,
+    .a3emeniveau7,
+    .a3emeniveau8 {
+        border:none;
+        left: 312px;
+    }
+    .a3emeniveau1 img,
+    .a3emeniveau2 img,
+    .a3emeniveau3 img,
+    .a3emeniveau4 img,
+    .a3emeniveau5 img,
+    .a3emeniveau6 img,
+    .a3emeniveau7 img,
+    .a3emeniveau8 img {
+        width:50%;
+    }
+    .a3emeniveau1 {
+        top: 0;
+    }
+    .a3emeniveau2 {
+        top: 119px;
+    }
+    .a3emeniveau3 {
+        top: 238px;
+    }
+    .a3emeniveau4 {
+        top: 342px;
+    }
+    .a3emeniveau5 {
+        top: 456px;
+    }
+    .a3emeniveau6 {
+        top: 570px;
+    }
+    .a3emeniveau7 {
+        top: 684px;
+    }
+    .a3emeniveau8 {
+        top: 798px;
+    }
+    /* ../Les annonceurs */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1400px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+
+    /* Visibilité des menus */
+    #customnavbarouverte {
+        display: none;
+    }
+    #menuouvert {display: block}
+    /* ../Visibilité des menus */
+
+    /* La page */
+    .cadreblanc3emeniveau2 {
+        max-width: 770px;
+        height: 1400px;
+        margin-left: 170px;
+    }
+
+
+    /* Les annonceurs */
+    .a3emeniveau1,
+    .a3emeniveau2,
+    .a3emeniveau3,
+    .a3emeniveau4,
+    .a3emeniveau5,
+    .a3emeniveau6,
+    .a3emeniveau7,
+    .a3emeniveau8 {
+        border:none;
+        left: 60px;
+    }
+
+    /* Les différents réglages de la carte modal */
+    .fa-eye  {
+        z-index: 1000;
+    }
+    /* ../Les différents réglages de la carte modal */
+
+    /* L'AJUSTEMENT DES CARTES EN FONCTION DE LA TAILLE */
+    /* Le display pour les cartes supérieurs à 1200px */
+    .enplus {
+        display: none;
+    }
+    .mapecran {
+        line-height: 1;
+    }
+
+    /* ../Le display pour les cartes supérieurs à 1200px */
+
+    /* Carte des champagnes des Montagnes de Reims et Côte des Blancs */
+    #montagne { margin-left:-300px; }
+    /* ../Carte des champagnes des Montagnes de Reims et Côte des Blancs */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 970px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 970px) {
+
+    /* La page */
+    .cadreblanc3emeniveau2 {
+        max-width: 750px;
+        height: 1400px;
+        margin-left: 165px;
+    }
+    .loupe3emeniveau {
+        margin-right: 160px;
+    }
+
+    /* Les différents réglages de la carte modal */
+    .mapecran {
+        line-height: 2;
+    }
+    .fa-times-circle {
+        margin-top:-50px;
+        float: right;
+    }
+    .textemodal {
+        display: none;
+    }
+    #modalentetegoogle {
+        height: 20px;
+    }
+    /* ../Les différents réglages de la carte modal */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LES PAGES DE 3ÈME NIVEAU
+/*								Résolution d'écran maximale 970px
+/*------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 750px) {
+
+    /* Visibilité des menus */
+    #menuouvert {
+        display: none
+    }
+    .visibilitecartegoogle {
+        display: block;
+    }
+    /* ../Visibilité des menus */
+    /* La page */
+    .cadreblanc3emeniveau2 {
+        max-width: 370px;
+        height: 1400px;
+        margin-left: 10px;
+    }
+
+    /* Les annonceurs */
+    .a3emeniveau1,
+    .a3emeniveau2,
+    .a3emeniveau3,
+    .a3emeniveau4,
+    .a3emeniveau5,
+    .a3emeniveau6,
+    .a3emeniveau7,
+    .a3emeniveau8 {
+        display: none;
+    }
+
+    #carte3emeniveau {
+        display: none;
+    }
+
+    .textetitre h3 {
+        display: none;
+    }
+
+    .emballage3emeniveau {
+        margin-top: 0;
+        padding: 0;
+        margin-bottom: 100px;
+    }
+    .commentairesonglets h5 {
+        font-size: 20px;
+    }
+    #footer2 {
+        display: none;
+    }
+    /* La présence des icônes sociaux pour les petits écrans */
+    #presenceicons {
+        display: block;
+    }
+    /* La présence des icônes sociaux pour les petits écrans */
+    /* Les différents réglages de la carte modal */
+    .mapecran {
+        margin-top:50px;
+    }
+    .fa-times-circle {
+        margin-top: -25px;
+        float: right;
+    }
+    .fa-map-marker.grand {
+        position: absolute;
+        font-size: 32px!important;
+        color: #666;
+        margin-top: 40px;
+        margin-left: 300px;
+
+    }
+    .fa-eye {
+        position: absolute;
+        margin-top: 40px;
+        margin-left: 250px;
+    }
+    #modalentetegoogle {
+        height: 0;
+    }
+    /* ../Les différents réglages de la carte modal */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA HOME / LA PAGE 1ER NIVEAU
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LES PAGES DE 3ÈME NIVEAU
+/*								Résolution minimale 300px et maximale 599px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (min-width: 300px) and (max-width: 599px) {
+
+    /* La page */
+    .cadreblanc3emeniveau2 {
+        max-width: 370px;
+        height: 1400px;
+        margin-left: 10px;
+    }
+    /* Les annonceurs */
+    .a3emeniveau1,
+    .a3emeniveau2,
+    .a3emeniveau3,
+    .a3emeniveau4,
+    .a3emeniveau5,
+    .a3emeniveau6,
+    .a3emeniveau7,
+    .a3emeniveau8 {
+        display: none;
+    }
+    .loupe3emeniveau {
+        display: none;
+    }
+    #carte3emeniveau {
+        display: none;
+    }
+    .visibilitecartegoogle {
+        display: block;
+    }
+    /* Les différents réglages de la carte modal */
+    #modalentetegoogle {
+        height: 40px;
+    }
+    .fa-times-circle {
+        margin-top: -50px;
+    }
+    /* ../Les différents réglages de la carte modal */
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LES PAGES DE 3ÈME NIVEAU
+/*								Résolution minmale 300px et maximale 599px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*------------------------------------------------------------------------------------------*/
+ul.tlvs {
+    list-style: none;
+}
+ul.tlvs li {
+    display: inline-block;
+}
+ul.tlvs li p {
+    color: #333;
+    margin-left: 20px;
+}
+ul.tlvs li p a {
+    color: #333;
+    font-weight: bold;
+    -webkit-transition: all 0.5s;
+    transition: all 0.35s;
+}
+ul.tlvs li p a:hover {
+    color: #990033;
+}
+/* Visibilité des listes de vignerons */
+#listevignerons1 {
+    display: block;
+}
+#listevignerons2 {
+    display: none;
+}
+/* ../Visibilité des listes de vignerons */
+/* ../Visibilité des paginations */
+#pagination1 {
+    display: block;
+}
+#pagination2 {
+    display: none;
+}
+/* ../Visibilité des paginations */
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE TOUS LES VINS
+/*------------------------------------------------------------------------------------------*
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								Résolution d'écran maximale à 1750px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1750px) {
+    #cartegoogle {
+        margin-top: 40px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE TOUS LES VINS
+/*								Résolution d'écran maximale à 1750px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								../Résolution d'écran maximale à 1400px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1400px) {
+    .form-group {
+        width: 80%;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								../Résolution d'écran maximale à 1400px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								../Résolution d'écran maximale à 1200px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+    .form-group {
+        width: 100%;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								../Résolution d'écran maximale à 1200px
+/*------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								Résolution d'écran maximale à 990px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 990px) {
+    #cartegoogle {
+        margin-top: 50px;
+    }
+    .tlvs {
+        margin-left: -40px;
+    }
+    .reportage {
+        float: left;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								../Résolution d'écran maximale à 990px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								Résolution d'écran maximale à 870px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 870px) {
+    #cartegoogle {
+        margin-top: 60px;
+    }
+    .form-group {
+        width: 80%;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								../Résolution d'écran maximale à 870px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								Résolution d'écran maximale à 750px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 750px) {
+    .recherche, .form-group, .input-group, .fa-map-marker, .fa-backward, .fa-forward {
+        z-index: 2000;
+    }
+    .fa-camera, .fa-at, .lesverres {
+        display: none;
+    }
+    .form-group {
+        width: 100%;
+    }
+    .fa-map-marker {
+        font-size: 25px;
+    }
+    /* Visibilité des listes de vignerons */
+    #listevignerons1 {
+        display: none;
+    }
+    #listevignerons2 {
+        display: block;
+        z-index: 2000;
+    }
+    /* ../Visibilité des listes de vignerons */
+    /* ../Visibilité des paginations */
+    #pagination1 {
+        display: none;
+    }
+    #pagination2 {
+        margin-top: 20px;
+        display: block;
+    }
+    /* ../Visibilité des paginations */
+    .recherche h3 {
+        margin-top: 20px;
+    }
+    .tlvs {
+        margin-top: -60px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE TOUS LES VINS
+/*								../Résolution d'écran supérieure à 750px
+/*------------------------------------------------------------------------------------------*/
+
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE OENOLOGIE
+/*								Résolution d'écran supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+#cadrereportages {
+    margin-top: 10px;
+    margin-left: 312px;
+    padding: 30px;
+}
+#video {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* C'est là que l'on choisit le responsive pour la vidéo youtube */
+#video iframe {
+    width: 1140px;
+    height: 635px;
+}
+#titre-reportages {
+    display: block;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.commentairesreportages {
+    margin-left: -40px;
+}
+ul.commentairesreportages {
+    list-style:none;
+}
+ul.commentairesreportages li {
+    display: inline-block;
+}
+/* Modifié de Boostrap */
+.panel-default > .panel-heading {
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+}
+/* Modifié de Boostrap */
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE OENOLOGIE
+/*								Résolution d'écran supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1800px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1800px) {
+    /* C'est là que l'on choisit le responsive pour la vidéo youtube */
+    #video iframe {
+        width: 1026px;
+        height: 571px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1800px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1600px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1600px) {
+    /* C'est là que l'on choisit le responsive pour la vidéo youtube */
+    #video iframe {
+        width: 912px;
+        height: 508px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1600px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1450px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1450px) {
+    /* C'est là que l'on choisit le responsive pour la vidéo youtube */
+    #video iframe {
+        width: 798px;
+        height: 444px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1450px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1400px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1400px) {
+    /* C'est là que l'on choisit le responsive pour la vidéo youtube */
+    #video iframe {
+        width: 718px;
+        height: 400px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1400px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+    #cadrereportages {
+        margin-left: 60px;
+    }
+    /* C'est là que l'on choisit le responsive pour la vidéo youtube */
+    #video iframe {
+        width: 718px;
+        height: 400px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 750px) {
+    #cadrereportages {
+        margin-left: 0;
+        padding-left: 10px;
+    }
+    /* C'est là que l'on choisit le responsive pour la vidéo youtube */
+    #video {
+        margin-top: 40px;
+    }
+    #video iframe {
+        width: 366px;
+        height: 204px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE OENOLOGIE
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE NEWSLETTER
+/*								Résolution d'écran supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+/* La barre de recherche de contact */
+#cadrerenewsletter {
+    margin-left: 312px;
+    padding: 30px;
+    margin-bottom: 80px;
+}
+.retraitformcontact {
+    margin-top: 220px;
+}
+form .form-control4 {
+    font-family: 'Lato', sans-serif;
+}
+form .form-control5 {
+    font-family: 'Lato', sans-serif;
+}
+.form-control4 {
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: #999;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-control5 {
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.42857143;
+    color: #fff;
+    background-color: #e6e6e6;
+    background-image: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+.form-control4:focus, .form-control5:focus {
+    font-family: 'Lato', sans-serif;
+    color: #666;
+    border-color: #fff;
+    background-color: rgba(230,230,230,1);
+    outline: 0;
+    box-shadow: 2px 2px 3px 1px #ccc inset;
+}
+.form-control4:focus textarea, .form-control5:focus textarea {
+    color: #ccc;
+}
+.form-control4::-moz-placeholder, .form-control5::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+}
+.form-control4:-ms-input-placeholder, .form-control5:-ms-input-placeholder {
+    color: #ccc;
+}
+.form-control4::-webkit-input-placeholder, .form-control5::-webkit-input-placeholder {
+    font-family: 'Lato', sans-serif;
+    color: #ccc;
+}
+textarea.form-control4, textarea.form-control5 {
+    height: auto;
+    color: #ccc;
+}
+textarea.form-control4 {
+    color: #ccc;
+}
+
+/* Fin barre de recherche de contact */
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE NEWSLETTER
+/*								../Résolution d'écran supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE NEWSLETTER
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+    #cadrerenewsletter {
+        margin-top: 10px;
+        margin-left: 60px;
+        padding: 30px;
+        margin-bottom: 80px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE NEWSLETTER
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE NEWSLETTER
+/*								Résolution d'écran maximale 990px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 990px) {
+    #cadrerenewsletter {
+        margin-top: 10px;
+        margin-left: 60px;
+        padding: 30px;
+        margin-bottom: 80px;
+    }
+    .retraitformcontact {
+        margin-top: 0;
+    }
+    #newsletter {
+        margin-top: 30px;
+    }
+    #newsletter img {
+        width: 100%;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE NEWSLETTER
+/*								Résolution d'écran maximale 990px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE NEWSLETTER
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 750px) {
+    #cadrerenewsletter {
+        margin-top: 40px;
+        margin-left: 0;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE NEWSLETTER
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE CONTACT
+/*								Résolution d'écran supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+#cadrecontact {
+    margin-left: 312px;
+    padding: 30px;
+    margin-bottom: 80px;
+}
+h3#contact {
+    margin-top: 100px;
+    margin-bottom: 40px;
+    color: #a5ab44;
+}
+p.contact {
+    margin-bottom: 40px;
+}
+a.contact {
+    color: #333;
+    -webkit-transition: all 0.35s;
+    transition: all 0.35s;
+}
+a:hover.contact {
+    color: #990033;
+}
+#cartegooglecontact {
+    margin: 0;
+    margin-top: -30px;
+    margin-left: 40px;
+    padding: 0;
+    height:880px;
+    width:100%;
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE CONTACT
+/*								../Résolution d'écran supérieure à 1920px
+/*------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE CONTACT
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+    #cadrecontact {
+        margin-left: 60px;
+    }
+    h3#contact {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        color: #a5ab44;
+    }
+    #cartegooglecontact {
+        margin-top: -30px;
+        margin-left: 0;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE CONTACT
+/*								Résolution d'écran maximale 1200px
+/*------------------------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE CONTACT
+/*								Résolution d'écran maximale 990px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 990px) {
+    #cartegooglecontact {
+        margin-top: 40px;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE CONTACT
+/*								Résolution d'écran maximale 990px
+/*------------------------------------------------------------------------------------------*
+
+/*------------------------------------------------------------------------------------------*/
+/* 											LA PAGE CONTACT
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+@media screen and (max-width: 750px) {
+    #cadrecontact {
+        margin-left: 0;
+    }
+    h3#contact {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        color: #a5ab44;
+    }
+}
+/*------------------------------------------------------------------------------------------*/
+/* 											../LA PAGE CONTACT
+/*								Résolution d'écran maximale 750px
+/*------------------------------------------------------------------------------------------*/
+
