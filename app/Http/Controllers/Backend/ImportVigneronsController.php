@@ -61,8 +61,8 @@ class ImportVigneronsController extends Controller
 
         if ($request->statut == 1)
         {
-            $vigneron->statut = "1";
-            $vigneron->save();
+            $vigneron['statut'] = 1;
+            $vigneron->update();
             return redirect(route('admin.importvignerons.index'))->with('message', "Le statut vigneron ". $vigneron['societe'] . " est fait.");
         }
         else

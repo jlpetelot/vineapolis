@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Importvigneron extends Model
 {
+    // pour éviter les erreurs car pas de colonne crated_at et updated_at
+    public $timestamps = false;
 
     // // Le champ de la table que l'on autorise à être modifié
     protected $fillable = ['statut'];

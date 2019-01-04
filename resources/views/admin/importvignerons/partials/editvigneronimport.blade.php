@@ -127,22 +127,6 @@
 </div>
 <!-- ../Sorte de vin -->
 
-<!-- Date de création -->
-<div class="form-horizontal">
-    <div class="form-group">
-        <div class="col-xs-2 control-label">
-            {!! Form::label('created_at', 'Date de création') !!}
-        </div>
-        <div class="col-xs-10">
-            <div class="form-control">
-                {{ $vigneron->creation }}
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ../Date de création -->
-
-
 <!-- Etat du vigneron -->
 <div class="form-horizontal">
     <div class="form-group">
