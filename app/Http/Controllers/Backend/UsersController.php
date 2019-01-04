@@ -380,8 +380,152 @@ class UsersController extends BackendController
         return view('admin.users.detailsachat', compact('facture'));
     }
 
+     /**
+    	* Méthode detailsachatvigneron () pour afficher le détail des achats des vignerons
+    	*
+    	* @param $i (ici l'id correspond à l'id du panier)
+    	* @return
+    **/
+    public function detailsachatvigneron ($id)
+    {
+        // On met diffForHumans() en locale avec la classe 
+        \Carbon\Carbon::setLocale('fr');
+
+        // On récupère l'annonceur
+        $vigneron = Vigneron::findOrFail($id);
+
+        // On récupère le user
+        $user = User::where('id', $vigneron->user_id)->first();
+       
+        // On récupère les factures
+        $achats = Facture::where('user_id', $user->id)->orderBy('id', 'desc')->get();
+
+        // On compte les achats
+        $nombreachats = Facture::count();
+
+        return view('admin.users.detailsachatvigneron', compact('achats','vigneron', 'nombreachats'));
+    }
+
     /**
-    	* Méthode detailsachat () pour afficher le détail d'un achat pour l'annonceur
+    	* Méthode updateachatvigneron () pour prolonger d'1 an la durée d'une annonce et mettre à jour les tables concernées
+    	*
+    	* @param $i (ici l'id correspond à l'id du panier)
+    	* @return
+    **/
+    public function updateachatvigneron (Request $request, $id)
+    {
+        // On met diffForHumans() en locale avec la classe 
+        \Carbon\Carbon::setLocale('fr');
+
+        // On récupère la ligne d'achat concernée
+        // $line = Line::findOrfail($id);
+        $facture = Facture::findOrfail($id);
+
+        // On créé un nouveau panier
+        $panier = Panier::create([
+            'user_id'       => $facture->user_id,
+            'total'         => number_format($facture->totalTTC, 2, '.', ''),
+            'created_at'    => $facture->updated_at,
+            'updated_at'    => $facture->updated_at->addYears(1)
+        ]);
+
+        // On récupère le dernier panier
+        $panier = Panier::orderBy('id', 'desc')->first();
+
+        // On créé un nouveau paiement
+        $paiement = Paiement::create([
+            'panier_id'     => $panier->id,
+            'data'          => json_encode("Administration"),
+            'type'          => "Administration",
+            'created_at'    => $facture->updated_at,
+            'updated_at'    => $facture->updated_at->addYears(1)
+        ]);
+        
+        // On récupère le produit
+        $product = Product::where('name', $facture->produit)->first();
+
+        // On créé une nouvelle ligne
+        $line = Line::create([
+            'product_id'    => $product->id,
+            'panier_id'     => $panier->id,
+            'user_id'       => $facture->user_id,
+            'prix'          => $facture->prixHT,
+            'qte'           => 1,
+            'type'          => "Administration",
+            'created_at'    => $facture->updated_at,
+            'updated_at'    => $facture->updated_at->addYears(1)
+        ]);
+
+        // On créé une nouvelle facture
+        $facture = Facture::create([
+            'name'              => $facture->name,
+            'adresse'           => !empty($facture->adresse) ? $facture->adresse : NULL,
+            'email'             => $facture->email,
+            'telephone'         => !empty($facture->telephone) ? $facture->telephone : NULL,
+            'identiteunique'    => "admin_".uniqid(),
+            'produit'           => $facture->produit,
+            'qte'               => 1,
+            'duree'             => 1,
+            'type'              => "Administration",
+            'prixHT'            => $facture->prixHT,
+            'soustotalHT'       => $facture->soustotalHT,
+            'tva'               => $facture->tva,
+            'totalTTC'          => $facture->totalTTC,
+            'user_id'           => $facture->user_id,
+            'created_at'        => Carbon::now(),
+            'datefacture'       => $facture->updated_at,
+            'updated_at'        => $facture->updated_at->addYears(1)
+        ]);
+
+        // On créé la nouvelle date pour le message et l'envoi du mail
+        $nouvelledate = $facture->updated_at->addYears(1)->format('d-m-Y');
+
+        /*=============== APRÈS LA TRANSACTION RÉUSSIE, ENVOI D'UN EMAIL À L'INTÉRESSÉ ==============*/
+        // On créé le message pour les mails
+        $message = Message::create([
+            'name'          => $facture->name,
+            'email'         => $facture->email,
+            'sujet'         => "$facture->name, votre abonnement a été prolongé d'un an.",
+            'role'          => 'vigneron',
+            'contenu'       => "Selon votre demande, l'option $facture->produit a été prolongée d'1 an jusqu'au $nouvelledate.",
+            'motdepasse'    => NULL,
+            'user_id'       => $facture->user_id
+        ]);
+
+        // Envoi de l'email
+        Mail::to($facture->email)->send(new \App\Mail\RenouvellementAchatvigneron($message));
+        /*=============== ../APRÈS LA TRANSACTION RÉUSSIE, ENVOI D'UN EMAIL À L'INTÉRESSÉ ==============*/
+
+        // On retourne aus détails des achats de cet annonceur
+        return redirect()->back()->with('message', "L'abonnement a bien été prolongé d'1 an !! 
+        Une nouvelle facture vient d'être éditée, celle sous vos yeux. Et un email vient d'être adressé au vigneron $facture->name afin de l'avertir.");
+    }
+
+     /**
+    	* Méthode editdetailachatvigneron () pour afficher le détai d'un achat vigneron pour l'administrateur
+    	*
+    	* @param $i (ici l'id correspond à l'id du panier)
+    	* @return
+    **/
+    public function editdetailachatvigneron ($id)
+    {
+        // On récupère la facture
+        $facture = Facture::findorFail($id);
+
+        // On met diffForHumans() en locale avec la classe 
+        \Carbon\Carbon::setLocale('fr');
+
+        // On récupère le user
+        $user = User::where('id', $facture->user_id)->first();
+
+        // On l'applique à l'annonceur
+        $vigneron = Vigneron::where('user_id', $user->id)->first();
+
+        return view('admin.vignerons.editdetailachatvigneron', compact('vigneron', 'facture'));
+    }
+
+    /**
+    	* Méthode detailsachatannonceur () pour afficher le détail d'un achat pour l'annonceur
     	*
     	* @param $i (ici l'id correspond à l'id du panier)
     	* @return

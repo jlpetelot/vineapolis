@@ -7,27 +7,23 @@
     <div class="content-wrapper"><!-- content-wrapper -->
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Détail des factures</h1>
+            <h1>Les vignerons</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
-                <li><a href="{{ route('factures.index') }}">Factures</a></li>
-                <li class="active">Détail des factures</li>
+                <li><a href="{{ route('admin.all') }}">Vignerons</a></li>
+                <li><a href="{{ route('admin.detailsachatvigneron', $vigneron->id) }}">Tous les achats d'un vigneron</a></li>
+                <li class="active">Détail de son achat</li>
             </ol>
         </section>
 
         <section class="content"><!-- Main content -->
             <!-- Default box -->
-            <div class="box box-primary"><!-- box box-danger -->
+            <div class="box box-danger"><!-- box box-danger -->
                 <div class="box-header"><!-- box-header -->
                     <div class="col-xs-12"><!-- col-xs-8 -->
                         <h4>
-                            @if ($facture->user->role === "vigneron")
-                                Détail des factures | Facture du vigneron<span style="color: #3c8dbc; font-weight: 600">&nbsp;{{ $facture->name }},
-                                </span>&nbsp;créée&nbsp;{{ $facture->created_at->diffForHumans() }}.
-                            @elseif ($facture->user->role === "annonceur")
-                                Détail des factures | Facture de l'annonceur<span style="color: #3c8dbc; font-weight: 600">&nbsp;{{ $facture->name }},
-                                </span>&nbsp;créée&nbsp;{{ $facture->created_at->diffForHumans() }}.
-                            @endif
+                            Les vignerons | Facture de l'achat <span style="color: #dd4b39; font-weight: 600">N° {{ $facture->id }}</span>
+                            &nbsp;achetée par&nbsp;<span style="color: #dd4b39; font-weight: 600">{{ $facture->name }},</span>&nbsp;{{ $facture->created_at->diffForHumans() }}.
                         </h4>
                     </div><!-- ../col-xs-12 -->
                 </div><!-- ../box-header -->
@@ -78,7 +74,7 @@
                         <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
                             Facture du : <strong>
-                                {{ $facture->created_at->format('j/m/Y') }} à {{ $facture->created_at->format('h:m:s') }}
+                                {{ $facture->created_at->format('j-m-Y') }} à {{ $facture->created_at->format('h:m:s') }}
                                 {!! Form::hidden('datefacture', $facture->datefacture) !!}
                             </strong><br>
                             Identité unique de la transcation : <strong>{{ $facture->identiteunique }}</strong><br>
@@ -96,9 +92,9 @@
                                     <tr>
                                         <th>Annonce</th>
                                         <th>Contractée</th>
-                                        <th>Durée contrat</th>
-                                        <th>Echéance au</th>
-                                        <th>Valable du</th>
+                                        <th>Durée</th>
+                                        <th>Echéance</th>
+                                        <th width="200px">Valable du</th>
                                         <th>Méthode de paiement</th>
                                         <th>Montant HT / an</th>
                                         <th>Sous-total HT</th>
@@ -108,7 +104,7 @@
                                     <tr>
                                         <td>{{ ucfirst($facture->produit) }}</td>
                                         {!! Form::hidden('produit', $facture->produit) !!}
-                                        <td>{{ $facture->created_at->diffForHumans() }} (le {{ $facture->created_at->format('j/m/Y') }})</td>
+                                        <td>{{ $facture->created_at->diffForHumans() }}</td>
                                         @if($facture->qte <= 1)
                                             <td>{{ $facture->qte }} an</td>
                                             {!! Form::hidden('qte', $facture->qte) !!}
@@ -121,15 +117,16 @@
                                             <td><img src="{{ asset('backend/img/logo-visa.svg') }}" width="15%" height="auto" alt="Visa"></td>
                                         @endif
                                         @if($facture->type === 'paypal')
-                                            <td><img src="{{ asset('backend/img/logo-paypal.svg') }}" width="20%" height="auto" alt="Paypal"></td>
+                                            <td><img src="{{ asset('backend/img/logo-paypal.svg') }}" width="15%" height="auto" alt="Paypal"></td>
                                         @endif
                                         @if($facture->type === "Administration")
                                             <td>Administration</td>
                                         @endif
                                         {!! Form::hidden('type', $facture->type) !!}
                                         <td>{{ number_format($facture->prixHT, 2, ',', ' ') }} €</td>
+                                        {!! Form::hidden('qte', $facture->qte) !!}
                                         {!! Form::hidden('prixHT', number_format($facture->prixHT, 2, ',', ' ')) !!}
-                                        <td>{{ number_format($facture->prixHT, 2, ',', ' ') }} €</td>
+                                        <td>{{ number_format($facture->soustotalHT, 2, ',', ' ') }} €</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -142,13 +139,8 @@
                         <!-- /.col -->
                         <div class="col-xs-6 col-xs-offset-6">
                             <p class="lead">
-                                @if($facture->qte <= 1)
-                                    Payée le {{ $facture->datefacture->format('j/m/Y') }},
-                                    échéance {{ $facture->updated_at->diffForHumans() }} (le {{ $facture->updated_at->format('j/m/Y') }}).
-                                @elseif($facture->qte > 1)
-                                    Payée le {{ $facture->datefacture->format('j/m/Y') }},
-                                    échéance {{ $facture->updated_at->diffForHumans() }} (le {{ $facture->updated_at->format('j/m/Y') }}).
-                                @endif
+                                Facture acquittée le {{ $facture->created_at->format('j/m/Y') }},
+                                échéance au {{ $facture->updated_at->format('j/m/Y') }}.
                             </p>
 
                             <div class="table-responsive">
@@ -175,7 +167,7 @@
                                         <td>
 
                                             <button type="submit" class="btn btn-xs btn-danger"
-                                                data-toggle="tooltip" title="Votre facture en PDF">
+                                               data-toggle="tooltip" title="Votre facture en PDF">
                                                 <i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;La facture en PDF
                                             </button>
                                         </td>
@@ -190,11 +182,14 @@
                     </div>
 
                     <!-- Bouton de retour -->
-                    <a href="{{ route('factures.index') }}" class="btn btn-default">
-                        <i class="fa fa-fw fa-long-arrow-right"></i>Retour aux factures
+                    <a href="{{ route('admin.detailsachatvigneron', $vigneron->id) }}" class="btn btn-default">
+                            <i class="fa fa-fw fa-long-arrow-right"></i>Retour aux détails des achats
+                        </a>
+                    <a href="{{ route('admin.all') }}" class="btn btn-default">
+                        <i class="fa fa-fw fa-long-arrow-right"></i>Retour à la liste des vignerons
                     </a>
                     <!-- /.Bouton de retour-->
-    
+
                 </section>
 
             </div>

@@ -50,13 +50,13 @@
                                         <td>Email</td>
                                         <td>Qualité</td>
                                         <td>Produit / Annonce</td>
-                                        <td>Contractée le</td>
+                                        <td width="100px">Contractée le</td>
                                         <td>Durée</td>
-                                        <td>Renouvelable le</td>
+                                        <td width="120px">Renouvelable le</td>
                                         <td width="150px">Payée avec</td>
-                                        <td>Prix HT</td>
-                                        <td>TVA</td>
-                                        <td>Prix TTC</td>
+                                        <td width="90px">Prix HT</td>
+                                        <td width="90px">TVA</td>
+                                        <td width="90px">Prix TTC</td>
                                         <td width="50px">Action</td>
                                     </tr>
                                     </thead>
@@ -83,7 +83,7 @@
                                                     &nbsp;(via Stripe)
                                                 </td>
                                             @endif
-                                            @if ($facture->type === 'PayPal')
+                                            @if ($facture->type === 'paypal')
                                                 <td>
                                                     <img src="{{ asset('backend/img/logo-paypal.svg') }}" alt="Paypal" width="40%">
                                                 </td>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class MessagesController extends BackendController
 {
@@ -22,19 +23,25 @@ class MessagesController extends BackendController
     **/
     public function index ()
     {
-        // On affiche les derniers messages entrés en dernier lorsqu'ils seront créés
-        // on se sert du scopFilter présent dans le modèle Message.php
-        // pour rechercher les messages par leur nom ou leur email
-        // puis on pagine
-        // Carbon::setLocale('fr');
-        $messages = Message::latest()
+        // On récupère l'id du logué pour empêcher les petits malins d'utiliser l'admin administrateur
+        if (Auth::user()->role == "administrateur")
+        {
+             // On affiche les derniers messages entrés en dernier lorsqu'ils seront créés
+            // on se sert du scopFilter présent dans le modèle Message.php
+            // pour rechercher les messages par leur nom ou leur email
+            // puis on pagine
+            // Carbon::setLocale('fr');
+            $messages = Message::latest()
             ->filter(request('term'))
             ->paginate($this->limit);
 
-        // On compte les messages
-        $compteMessages = Message::count();
+            // On compte les messages
+            $compteMessages = Message::count();
 
-        return view('admin.messages.messages', compact('messages', 'compteMessages'));
+            return view('admin.messages.messages', compact('messages', 'compteMessages'));
+        }
+        // Si c'en n'est pas, abort
+        else return abort('401');
     }
 
     /**
@@ -45,10 +52,16 @@ class MessagesController extends BackendController
     **/
     public function detail ($id)
     {
-        // On récupère le message
-        $message = Message::findOrFail($id);
+        // On récupère l'id du logué pour empêcher les petits malins d'utiliser l'admin administrateur
+        if (Auth::user()->role == "administrateur")
+        {
+             // On récupère le message
+            $message = Message::findOrFail($id);
 
-        return view('admin.messages.detail', compact('message'));
+            return view('admin.messages.detail', compact('message'));
+        }
+        // Si c'en n'est pas, abort
+        else return abort('401');
     }
 
     /**

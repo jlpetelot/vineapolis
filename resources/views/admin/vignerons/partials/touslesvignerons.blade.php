@@ -58,7 +58,7 @@
                     <td>Mise à jour</td>
                     <td>Actif</td>
                     <td>Payé</td>
-                    <td width="180px">Actions</td>
+                    <td width="160px">Actions</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -111,12 +111,7 @@
                         @if ($vigneron->paye === 0 || $vigneron->paye == NULL)
                             <td><span class="label label-default">Non</span></td>
                         @elseif ($vigneron->paye === 1)
-                            <td>
-                                <a href="{{ route('admin.detailachat', $vigneron->id) }}" class="label label-success"
-                                    data-toggle="tooltip" title="Détails du paiement">
-                                Oui
-                                </a>
-                            </td>
+                            <td><span class="label label-success">Oui</span></td>
                         @endif
                         <td>
                             <!-- Les boutons éditer, identifiant, email, activation vidéo et payé -->
@@ -142,16 +137,11 @@
                                     <i class="fa fa-video-camera"></i>
                                 </a>
                            @endif
-                           @if ($vigneron->paye === 0)
-                                <a href="{{ route('admin.vignerons.activerpaiement', $vigneron->id) }}" class="btn btn-xs btn-default"
-                                    data-toggle="tooltip" title="Activer son paiement">
-                                    <i class="fa fa-credit-card"></i>
-                                </a>
-                            @endif
+                          
                             @if ($vigneron->paye === 1)
-                                <a href="{{ route('admin.vignerons.activerpaiement', $vigneron->id) }}" class="btn btn-xs btn-success"
-                                    data-toggle="tooltip" title="Prolonger d'un an">
-                                    <i class="fa fa-credit-card"></i>
+                                <a href="{{ route('admin.detailsachatvigneron', $vigneron->id) }}" class="btn btn-xs btn-success"
+                                    data-toggle="tooltip" title="Détails paiements / Factures / Prolonger annonce d'un an">
+                                    <i class="fa fa-credit-card-alt"></i>
                                 </a>
                             @endif
                             <!-- ../Les boutons éditer, identifiant, email, activation vidéo et payé -->

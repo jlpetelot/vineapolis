@@ -257,6 +257,13 @@ Route::prefix('admin')->group(function ()
     Route::post('/telechargerPDF/{id}', 'Backend\UsersController@telechargerPDF')->name('admin.telechargerPDF');
     /* ../ADMIN (METTRE À JOUR LES PROFILS) */
 
+    // Achats pour les vignerons
+    Route::get('/detailsachatvigneron/{id}', 'Backend\UsersController@detailsachatvigneron')->name('admin.detailsachatvigneron');
+    // Détails des achats pour les vignerons
+    Route::post('/updateachatvigneron/{id}', 'Backend\UsersController@updateachatvigneron')->name('admin.updateachatvigneron');
+    // Affiche le détail d'un des achats du vigneron
+    Route::post('/editdetailachatvigneron/{id}', 'Backend\UsersController@editdetailachatvigneron')->name('admin.editdetailachatvigneron');
+
     /* VIGNERONS ADMIN */
     Route::get('/all', 'Backend\VigneronsController@all')->name('admin.all');
     Route::get('/create', 'Backend\VigneronsController@create')->name('admin.create');

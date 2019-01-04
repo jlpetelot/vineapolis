@@ -25,6 +25,7 @@ class CreateImportvigneronsTable extends Migration
             $table->dateTime('creation')->nullable();
             $table->dateTime('synchronisation')->nullable();
             $table->integer('url_vignerons');
+            $table->boolean('statut')->nullable()->default(NULL);
         });
     }
 

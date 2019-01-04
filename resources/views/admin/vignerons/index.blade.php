@@ -47,19 +47,13 @@
                                 Pour activer la vidéo du vigneron, cliquez sur le bouton :
                                 <span><i class="fa fa-video-camera fa-lg"></i></span>
                             </p>
-                            <p style="font-size: 12px; margin-top: -3px;">
-                                Pour activer le paiement du vigneron, cliquez sur le bouton :
-                                <span><i class="fa fa-credit-card fa-lg"></i></span>
-                                Pour connaître les détails de son paiement, cliquez sur le bouton : Payé
-                                <span class="label label-success">Oui</span>
-                            </p>
-                            <p style="font-size: 12px; margin-top: -3px;">
-                                Pour prolonger la souscription d'un vigneron d'1 an, cliquez sur le bouton :
+                            <p style="font-size: 12px; margin-top: -6px;">
+                                Pour éditer la facture, la télécharger en PDF et prolonger la souscription du vigneron d'1 an, cliquez sur le bouton :
                                 <a href="#" class="btn btn-xs btn-success">
                                     <i class="fa fa-credit-card"></i>
                                 </a>
                             </p>
-                            <p style="font-size: 12px; margin-top: -7px;">
+                            <p style="font-size: 12px; margin-top: -12px;">
                                 Pour supprimer un vigneron, cliquez sur le bouton :
                                 <a href="#" class="btn btn-xs btn-danger">
                                     <i class="fa fa-times"></i>

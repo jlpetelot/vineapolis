@@ -31,7 +31,7 @@ class VigneronRequest extends FormRequest
             'email'             => 'email',
             'latlong'           => 'required',
             'sortevin'          => 'required',
-            'actif'             => 'required',
+            // 'actif'             => 'required',
             'departement'       => 'required',
             'created_at'        => 'required',
         ];
