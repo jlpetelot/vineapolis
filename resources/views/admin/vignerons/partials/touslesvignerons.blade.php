@@ -58,7 +58,7 @@
                     <td>Mise à jour</td>
                     <td>Actif</td>
                     <td>Payé</td>
-                    <td width="160px">Actions</td>
+                    <td width="200px">Actions</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -116,16 +116,22 @@
                         <td>
                             <!-- Les boutons éditer, identifiant, email, activation vidéo et payé -->
                             <a href="{{ route('admin.edit', $vigneron->id) }}" class="btn btn-xs btn-default"
-                                data-toggle="tooltip" title="Editer/Mise à jour">
-                                <i class="fa fa-edit"></i>
+                                data-toggle="tooltip" title="Mise à jour">
+                                <i class="fa fa-edit fa-lg"></i>
                             </a>
+                            @if($vigneron->paye === 0)
+                                <a href="{{ route('admin.creerachat', $vigneron->id) }}" class="btn btn-xs btn-default"
+                                    data-toggle="tooltip" title="Créer un achat">
+                                    <i class="fa fa-shopping-cart fa-lg"></i>
+                                </a>
+                            @endif
                             @if($vigneron->user_id == NULL)
                                 <a href="{{ route('admin.create.identifiant', $vigneron->id) }}" class="btn btn-xs btn-primary"
                                     data-toggle="tooltip" title="Créer identifiant unique">
                                     <i class="fa fa-fw fa-user-plus"></i>
                                 </a>
                             @endif
-                           @if($vigneron->email)
+                            @if($vigneron->email)
                                 <a href="{{ route('admin.vignerons.message', $vigneron->id) }}" class="btn btn-xs btn-default"
                                    data-toggle="tooltip" title="Lui envoyer un email">
                                     <i class="fa fa-fw fa-envelope-o"></i>
@@ -141,7 +147,7 @@
                             @if ($vigneron->paye === 1)
                                 <a href="{{ route('admin.detailsachatvigneron', $vigneron->id) }}" class="btn btn-xs btn-success"
                                     data-toggle="tooltip" title="Détails paiements / Factures / Prolonger annonce d'un an">
-                                    <i class="fa fa-credit-card-alt"></i>
+                                    <i class="fa fa-shopping-basket fa-lg"></i>
                                 </a>
                             @endif
                             <!-- ../Les boutons éditer, identifiant, email, activation vidéo et payé -->

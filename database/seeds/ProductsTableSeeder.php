@@ -2858,8 +2858,6 @@ class ProductsTableSeeder extends Seeder
                 'created_at'    => $date,
                 'updated_at'    => $date
             ],
-
-
         ]);
     }
 }

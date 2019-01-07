@@ -2,22 +2,13 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Les routes des cartes et le Front-End
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
+/* FRANCE */
 Route::get('/', 'IndexController@index')->name('accueil');
-
-/*
-|--------------------------------------------------------------------------
-| Les routes des cartes
-|--------------------------------------------------------------------------
-*/
+/* ../FRANCE */
 
 /* BOURGOGNE */
 Route::get('/france/bourgogne', 'Cartes\BourgogneController@index')->name('bourgogne');
@@ -131,12 +122,6 @@ Route::get('/france/sud-ouest', 'Cartes\SudouestController@index')->name('Sudoue
 Route::get('/france/sud-ouest/aveyron', 'Cartes\SudouestController@aveyron')->name('Aveyron');
 /* ../SUD-OUEST */
 
-/*
-|--------------------------------------------------------------------------
-| ../Les routes des cartes
-|--------------------------------------------------------------------------
-*/
-
 /* OENOLOGIE */
 Route::get('/oenologie', 'OenologieController@index')->name('oenologie');
 /* ../OENOLOGIE *
@@ -188,7 +173,19 @@ Route::get('/registerannonceur', 'Auth\RegisterannonceurController@showRegistrat
 // Route::post('/registerannonceur', 'Auth\RegisterannonceurController@registerannonceurpost')->name('registerannonceurpost');
 /* ../LES AUTHS SUPPLÉMENTAIRES */
 
-/* LE BACKEND */
+/*
+|--------------------------------------------------------------------------
+| ../Les routes des cartes et le Front-End
+|--------------------------------------------------------------------------
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| Le Backend
+|--------------------------------------------------------------------------
+*/
+
 Route::prefix('admin')->group(function ()
 {
     /* L'ACCUEIL ET AJOUT DES TÂCHES */
@@ -272,6 +269,8 @@ Route::prefix('admin')->group(function ()
     Route::post('/store/identifiant/{id?}', 'Backend\VigneronsController@storeidentifiant')->name('admin.store.identifiant');
     Route::get('/resultat/identifiant/{id}', 'Backend\VigneronsController@resultatidentifiant')->name('admin.create.resultat');
     Route::get('/edit/{id}', 'Backend\VigneronsController@edit')->name('admin.edit');
+    Route::get('/creerachat/{id}', 'Backend\VigneronsController@creerachat')->name('admin.creerachat');
+    Route::put('/updateachat/{id}', 'Backend\VigneronsController@updateachat')->name('admin.updateachat');
     Route::put('/update/{id}', 'Backend\VigneronsController@update')->name('admin.update');
     Route::get('/editimage/{id}', 'Backend\VigneronsController@editimage')->name('admin.editimage');
     Route::put('/updateimage/{id}', 'Backend\VigneronsController@updateimage')->name('admin.updateimage');
@@ -677,4 +676,9 @@ Route::prefix('admin')->group(function ()
     /* ../ENVOI MESSAGES ANNONCEUR ANNONCEURS */
 
 });
-/* ../LE BACKEND */
+
+/*
+|--------------------------------------------------------------------------
+| ../Le Backend
+|--------------------------------------------------------------------------
+*/

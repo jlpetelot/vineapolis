@@ -30,14 +30,17 @@
                                 </a> de la liste. La colonne Actif passe au vert :
                                 <span class="label label-success">Oui</span>
                             </p>
-
                             <p style="font-size: 12px; margin-top: -10px;">
                                 Si le vigneron est absent, il faut le créer en cliquant sur le bouton vert :
                                 <span class="label label-success">Créer un vigneron</span>
                             </p>
                             <p style="font-size: 12px; margin-top: -3px;">
-                                Pour aider un vigneron dans sa démarche, on l'édite :
+                                Pour créer un vigneron ou l'aider dans sa démarche, on l'édite :
                                 <span><i class="fa fa-edit fa-lg"></i></span>
+                            </p>
+                            <p style="font-size: 12px; margin-top: -3px;">
+                                Une fois le vigneron créé, pour lui assigner un achat, cliquez sur le bouton :
+                                <span><i class="fa fa-shopping-cart fa-lg"></i></span>
                             </p>
                             <p style="font-size: 12px; margin-top: -3px;">
                                 Pour lui envoyer un email, si le vigneron en possède, cliquez sur le bouton :
@@ -50,7 +53,7 @@
                             <p style="font-size: 12px; margin-top: -6px;">
                                 Pour éditer la facture, la télécharger en PDF et prolonger la souscription du vigneron d'1 an, cliquez sur le bouton :
                                 <a href="#" class="btn btn-xs btn-success">
-                                    <i class="fa fa-credit-card"></i>
+                                    <i class="fa fa-shopping-basket"></i>
                                 </a>
                             </p>
                             <p style="font-size: 12px; margin-top: -12px;">

@@ -92,20 +92,7 @@
                 </div><!-- ../col-xs-7 -->
 
                 <div class="col-xs-12" style="margin-top: 10px"><!-- col-xs-12 -->
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam blanditiis doloremque inventore minus
-                        quia quibusdam tenetur. Commodi debitis esse facere, fuga incidunt iste iure laboriosam
-                        laborum repellat suscipit totam voluptate.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam blanditiis doloremque inventore minus
-                        quia quibusdam tenetur. Commodi debitis esse facere, fuga incidunt iste iure laboriosam
-                        laborum repellat suscipit totam voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam blanditiis doloremque inventore minus
-                        quia quibusdam tenetur. Commodi debitis esse facere, fuga incidunt iste iure laboriosam
-                        laborum repellat suscipit totam voluptate.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam blanditiis doloremque inventore minus
-                        quia quibusdam tenetur. Commodi debitis esse facere, fuga incidunt iste iure laboriosam
-                        laborum repellat suscipit totam voluptate.
-                    </p>
+                    <p>{!! $vin->fiche !!}</p>
                 </div><!-- ../col-xs-12 -->
 
                 <div class="col-xs-12" id="detailgooglemap">

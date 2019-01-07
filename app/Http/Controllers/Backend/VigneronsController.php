@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Message;
 use App\User;
 use App\Vigneron;
+use App\Panier;
+use App\Paiement;
 use App\Line;
+use App\Facture;
 use App\Product;
+use App\Paiementpaypal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -23,19 +27,19 @@ class VigneronsController extends BackendController
     protected $limit = 10;
 
     // Le chemin vers le téléversement du visuel du reportage
-    //protected $uploadPath;
+    protected $uploadPath;
 
     /**
      * Méthode __construct () pour le chemin du visuel du reportage
      *
      * @return void
      **/
-//    public function __construct ()
-//    {
-//        // permet de garder le middleware $this->middleware('auth') et donc la session de l'auth
-//        parent::__construct();
-//        $this->uploadPath = public_path(config('cms.image.directory'));
-//    }
+    public function __construct ()
+    {
+       // permet de garder le middleware $this->middleware('auth') et donc la session de l'auth
+       parent::__construct();
+       $this->uploadPath = public_path(config('cms.image.directory'));
+    }
 
     /**
      * Méthode all () pour ramener tous les vignerons avec le module de recherche
@@ -3024,6 +3028,269 @@ class VigneronsController extends BackendController
     }
 
     /**
+     * Méthode creerachat () pour créer ou mettre à jour un achat d'un vigneron déjà indentifié
+     *
+     * @param $id
+     * @return view('admin.vignerons.creerachat', compact('vigneron'));
+     **/
+    public function creerachat ($id)
+    {
+        // On récupère l'id du logué pour empêcher les petits malins d'utiliser l'admin administrateur
+        if (Auth::user()->role == "administrateur")
+        {
+            $vigneron = Vigneron::where('id', $id)->first();
+
+            // On récupère les options 1 et 2 des products
+            $option1 = Product::where('id', 1)->first();
+            $option2 = Product::where('id', 2)->first();
+
+            return view('admin.vignerons.creerachat', compact('vigneron', 'option1', 'option2'));
+        }
+        else return abort('401');
+    }
+
+    /**
+     * Méthode updateachat () pour mettre à jour l'achat d'un vigneron déjà indentifié
+     *
+     * @param $id
+     * @return view('admin.vignerons.updateachat', compact('vigneron'));
+     **/
+    public function updateachat (Requests\UpdateAchatVigneronRequest $request, $id)
+    {   
+        // On récupère l'id du logué pour empêcher les petits malins d'utiliser l'admin administrateur
+        if (Auth::user()->role == "administrateur")
+        {
+            // On récupère le vigneron
+            $vigneron = Vigneron::where('id', $id)->first();
+
+            // Si la vidéo est cochée, on renvoit au mail
+            if ($request->video === 'video') return redirect(route('admin.vignerons.message', $vigneron->id));
+
+            // On met diffForHumans() en locale avec la classe 
+            \Carbon\Carbon::setLocale('fr');
+
+            // On vérifie qu'il n'y a pas eu d'achat effectué pour ce vigneron
+            $achat = Facture::where('user_id', $vigneron->user_id)->first();
+            // Si oui, message d'erreur
+            if ($achat) return redirect()->back()->with('error', "Ce vigneron a déjà acheté une option !!");
+
+            // Si il y a une image, c'est l'option 2
+            if ($request->hasFile('imagereportage'))
+            {
+                $width = config('cms.image.thumbnail.width');
+                $height = config('cms.image.thumbnail.height');
+    
+                $image = $request->file('imagereportage');
+                $fileName = $image->getClientOriginalName();
+                $destination = $this->uploadPath;
+    
+                $successUploaded = $image->move($destination, $fileName);
+    
+                if ($successUploaded)
+                {
+                    $extension      = $image->getClientOriginalExtension();
+                    $thumbnail      = str_replace(".{$extension}", "_thumb.{$extension}", $fileName);
+    
+                    Image::make($destination . '/' . $fileName)
+                        ->resize($width, $height)
+                        ->save($destination . '/thumbs/' . $thumbnail);
+                }
+
+                // On récupère le produit
+                $product = Product::where('id', 2)->first();
+
+                // On créé un nouveau panier
+                $panier = Panier::create([
+                    'user_id'       => $vigneron->user_id,
+                    'total'         => number_format($product->prix * $request->duree * 1.2, 2, '.', ''),
+                    'created_at'    => Carbon::now(),
+                    'updated_at'    => Carbon::now()->addYears($request->duree)
+                ]);
+
+                // On récupère le dernier panier
+                $panier = Panier::orderBy('id', 'desc')->first();
+
+                // On créé un nouveau paiement
+                $paiement = Paiement::create([
+                    'panier_id'     => $panier->id,
+                    'data'          => json_encode("Administration"),
+                    'type'          => "Administration",
+                    'created_at'    => Carbon::now(),
+                    'updated_at'    => Carbon::now()->addYears($request->duree)
+                ]);
+
+                // On créé une nouvelle ligne
+                $line = Line::create([
+                    'product_id'    => $product->id,
+                    'panier_id'     => $panier->id,
+                    'user_id'       => $vigneron->user_id,
+                    'prix'          => number_format($product->prix * $request->duree, 2, '.', ''),
+                    'qte'           => $request->duree,
+                    'type'          => "Administration",
+                    'created_at'    => Carbon::now(),
+                    'updated_at'    => Carbon::now()->addYears($request->duree)
+                ]);
+                
+                // On créé une nouvelle facture
+                $facture = Facture::create([
+                    'name'              => $vigneron->societe,
+                    'adresse'           => !empty($vigneron->adresse) ? $vigneron->adresse : NULL,
+                    'email'             => $vigneron->email,
+                    'telephone'         => !empty($vigneron->telephone) ? $vigneron->telephone : NULL,
+                    'identiteunique'    => "admin_".uniqid(),
+                    'produit'           => $product->name,
+                    'qte'               => $request->duree,
+                    'duree'             => $request->duree,
+                    'type'              => "Administration",
+                    'prixHT'            => number_format($product->prix, 2, '.', ''),
+                    'soustotalHT'       => number_format($product->prix * $request->duree, 2, '.', ''),
+                    'tva'               => number_format($product->prix * $request->duree * 0.2, 2, '.', ''),
+                    'totalTTC'          => number_format($product->prix * $request->duree * 1.2, 2, '.', ''),
+                    'user_id'           => $vigneron->user_id,
+                    'created_at'        => Carbon::now(),
+                    'datefacture'       => Carbon::now(),
+                    'updated_at'        => Carbon::now()->addYears($request->duree)
+                ]);
+
+                // On créé les données
+                $data = [
+                    'fiche'             => $request->fiche,
+                    'created_at'        => $request->created_at,
+                    'duree'             => $request->duree,
+                    'imagereportage'    => !empty($fileName) ? $fileName : NULL,
+                    'reportage'         => !empty($request->reportage) ? $request->reportage : NULL,
+                    'actif'             => 1,
+                    'paye'              => 1,
+                    'product_id'        => $product->id
+                ];
+                
+                // On enregistre les données pour le vigneron
+                $vigneron->update($data);
+
+                // On récupère la dernière facture
+                $facture = Facture::orderBy('id', 'desc')->fist();
+
+                // On créé la nouvelle date pour le message et l'envoi du mail
+                $nouvelledate = Carbon::now()->addYears($request->duree)->format('d-m-Y');
+
+                /*=============== APRÈS LA TRANSACTION RÉUSSIE, ENVOI D'UN EMAIL À L'INTÉRESSÉ ==============*/
+                // On créé le message pour les mails
+                $message = Message::create([
+                    'name'          => $facture->name,
+                    'email'         => $facture->email,
+                    'sujet'         => "$facture->name, l'option N°$product->id, $product->name est achetée.",
+                    'role'          => 'vigneron',
+                    'contenu'       => "Selon votre demande, l'option N°$product->id, $product->name a bien été échetée pour une dureé de $request->duree an(s). Plus de détails sur votre administration",
+                    'motdepasse'    => NULL,
+                    'user_id'       => $facture->user_id
+                ]);
+
+                // Envoi de l'email
+                Mail::to($facture->email)->send(new \App\Mail\UpdateAchatVigneron($message));
+                /*=============== ../APRÈS LA TRANSACTION RÉUSSIE, ENVOI D'UN EMAIL À L'INTÉRESSÉ ==============*/
+                
+                return redirect(route('admin.all'))->with('message', "L'option N°$product->id, $product->name du vigneron $vigneron->societe a bien été échetée pour une dureé de $request->duree an(s) !!");
+            
+            }
+
+
+            else 
+            {
+                // Si il n'y a pas d'image c'est l'opton 1
+
+                // On récupère le produit
+                $product = Product::where('id', 1)->first();
+
+                // On créé un nouveau panier
+                $panier = Panier::create([
+                    'user_id'       => $vigneron->user_id,
+                    'total'         => number_format($product->prix * $request->duree * 1.2, 2, '.', ''),
+                    'created_at'    => Carbon::now(),
+                    'updated_at'    => Carbon::now()->addYears($request->duree)
+                ]);
+
+                // On récupère le dernier panier
+                $panier = Panier::orderBy('id', 'desc')->first();
+
+                // On créé un nouveau paiement
+                 $paiement = Paiement::create([
+                    'panier_id'     => $panier->id,
+                    'data'          => json_encode("Administration"),
+                    'type'          => "Administration",
+                    'created_at'    => Carbon::now(),
+                    'updated_at'    => Carbon::now()->addYears($request->duree)
+                ]);
+
+                // On créé une nouvelle ligne
+                $line = Line::create([
+                    'product_id'    => $product->id,
+                    'panier_id'     => $panier->id,
+                    'user_id'       => $vigneron->user_id,
+                    'prix'          => number_format($product->prix * $request->duree, 2, '.', ''),
+                    'qte'           => $request->duree,
+                    'type'          => "Administration",
+                    'created_at'    => Carbon::now(),
+                    'updated_at'    => Carbon::now()->addYears($request->duree)
+                ]);
+
+                // On créé une nouvelle facture
+                $facture = Facture::create([
+                    'name'              => $vigneron->societe,
+                    'adresse'           => !empty($vigneron->adresse) ? $vigneron->adresse : NULL,
+                    'email'             => $vigneron->email,
+                    'telephone'         => !empty($vigneron->telephone) ? $vigneron->telephone : NULL,
+                    'identiteunique'    => "admin_".uniqid(),
+                    'produit'           => $product->name,
+                    'qte'               => $request->duree,
+                    'duree'             => $request->duree,
+                    'type'              => "Administration",
+                    'prixHT'            => number_format($product->prix, 2, '.', ''),
+                    'soustotalHT'       => number_format($product->prix * $request->duree, 2, '.', ''),
+                    'tva'               => number_format($product->prix * $request->duree * 0.2, 2, '.', ''),
+                    'totalTTC'          => number_format($product->prix * $request->duree * 1.2, 2, '.', ''),
+                    'user_id'           => $vigneron->user_id,
+                    'created_at'        => Carbon::now(),
+                    'datefacture'       => Carbon::now(),
+                    'updated_at'        => Carbon::now()->addYears($request->duree)
+                ]);
+
+                // On créé les données
+                $data = [
+                    'fiche'             => $request->fiche,
+                    'created_at'        => $request->created_at,
+                    'duree'             => $request->duree,
+                    'actif'             => 1,
+                    'paye'              => 1,
+                    'product_id'        => $product->id
+                ];
+                
+                // On enregistre les données pour le vigneron
+                $vigneron->update($data);
+
+                /*=============== APRÈS LA TRANSACTION RÉUSSIE, ENVOI D'UN EMAIL À L'INTÉRESSÉ ==============*/
+                // On créé le message pour les mails
+                $message = Message::create([
+                    'name'          => $facture->name,
+                    'email'         => $facture->email,
+                    'sujet'         => "$facture->name, l'option N°$product->id, $product->name est achetée.",
+                    'role'          => 'vigneron',
+                    'contenu'       => "Selon votre demande, l'option N°$product->id, $product->name a bien été échetée pour une dureé de $request->duree an(s). Plus de détails sur votre administration",
+                    'motdepasse'    => NULL,
+                    'user_id'       => $facture->user_id
+                ]);
+
+                // Envoi de l'email
+                Mail::to($facture->email)->send(new \App\Mail\UpdateAchatVigneron($message));
+                /*=============== ../APRÈS LA TRANSACTION RÉUSSIE, ENVOI D'UN EMAIL À L'INTÉRESSÉ ==============*/
+                            
+                return redirect(route('admin.all'))->with('message', "L'option N°$product->id, $product->name du vigneron $vigneron->societe a bien été échetée pour une dureé de $request->duree an(s) !!");
+            }
+
+        }
+        else return abort('401');
+    }
+
+    /**
      * Méthode update () pour mettre à jour un vigneron
      *
      * @param
@@ -3111,10 +3378,67 @@ class VigneronsController extends BackendController
         // On récupère l'id du logué pour empêcher les petits malins d'utiliser l'admin administrateur
         if (Auth::user()->role == "administrateur")
         {
+            // On récupère le vigneron
             $vigneron = Vigneron::findOrFail($id);
+
+            // On vérifie si il a au moins un panier
+            $paniers = Panier::where('user_id', $vigneron->user_id)->get();
+            // Si il y a au moins un panier, il y a aussi des paiements en fonction des paniers
+            if ($paniers)
+            {
+                foreach ($paniers as $panier)
+                {
+                    $paiements = Paiement::where('panier_id', $panier->id)->get();
+                    // On supprime les paiements
+                    foreach ($paiements as $paiement)
+                    {
+                        $paiement->delete();
+                    }
+                    // on supprime les paniers
+                    $panier->delete();
+                }
+            }
+
+            // On vérifie si il a au moins une ligne
+            $lines = Line::where('user_id', $vigneron->user_id)->get();
+            // Si il a au moins une ligne, on supprime
+            if ($lines) 
+            {
+                foreach ($lines as $line)
+                {
+                    // on supprime les lignes
+                    $line->delete();
+                }
+            }
+
+            // On vérifie si il y a au moins une facture
+            $factures = Facture::where('user_id', $vigneron->user_id)->get();
+            // Si il a au moins une facture, on supprime
+            if ($factures ) 
+            {
+                foreach ($factures as $facture)
+                {
+                    // on supprime les factures
+                    $facture->delete();
+                }
+            }
+
+            // On vérifie si il y a au moins un PayPal
+            $paypals = Paiementpaypal::where('user_id', $vigneron->user_id)->get();
+            // Si il a au moins un paypal, on supprime
+            if ($paypals) {
+                foreach ($paypals as $paypal)
+                {
+                    // on supprime les paypal
+                    $paypal>delete();
+                }
+            }
+
+            // Enfin, on supprime le vigneron
             $vigneron->delete();
     
             return redirect(route('admin.all'))->with('message', "{$vigneron->societe} a bien été supprimé !");
+
         }
         else return abort('401');
     }
