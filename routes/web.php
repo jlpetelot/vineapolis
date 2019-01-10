@@ -146,6 +146,7 @@ Route::post('/contact/annonceurs/post', 'ContactController@annonceurspost')->nam
 /* ../TOUS LES CONTACTS */
 
 /* TOUS LES VINS */
+Route::get('/tous-les-vins', 'TouslesvinsController@recherche')->name('touslesvins');
 Route::get('/tous-les-vins/recherche', 'TouslesvinsController@recherche')->name('touslesvins.recherche');
 Route::get('/detail-du-vin/{vigneron}', 'DetailvinController@index')->name('detailvin');
 /* La route en attente pour l'envoi des messages, on envoit en paramètre l'alias de la société du vigneron */
