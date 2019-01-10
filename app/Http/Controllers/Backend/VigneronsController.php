@@ -722,7 +722,7 @@ class VigneronsController extends BackendController
                 'aliascommunevinicole'  => "pessac-leognan",
                 'localitevinicole'      => "Pessac-Léognan",
                 'aliaslocalitevinicole' => "pessac-leognan",
-                'zoom'                  => 12,
+                'zoom'                  => 11,
                 'latlongregion'         => "44.72,-0.55",
                 'reportage'             => $request->reportage,
                 'fiche'                 => $request->fiche,

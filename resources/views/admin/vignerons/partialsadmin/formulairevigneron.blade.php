@@ -195,6 +195,9 @@
 <div class="form-horizontal">
     <div class="form-group {{ $errors->has('region') ? 'has-error': '' }}">
         <div class="col-xs-2 control-label">
+            <small style="font-size: 8px; position: absolute; margin: 0 0 0 -20px">
+                (<i class="fa fa-fw fa-asterisk text-red"></i>)
+            </small>
             {!! Form::label('region', 'Région vinicole') !!}
         </div>
         <div class="col-xs-10">
