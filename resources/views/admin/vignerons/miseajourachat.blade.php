@@ -11,11 +11,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Mise à jour d'un vigneron</h1>
+            <h1>Mise à jour des données d'achat du vigneron</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
                 <li><a href="{{ route('admin.all') }}"> Tous les vignerons</a></li>
-                <li class="active">Mise à jour d'un vigneron</li>
+                <li class="active">Mise à jour des données d'achat du vigneron</li>
             </ol>
         </section>
         <!-- Main content -->
@@ -23,7 +23,7 @@
             <!-- Default box -->
             <div class="box box-success">
                 <div class="box-header">
-                    <h4>Vignerons | <span style="color: #00a65a">Mise à jour du vigneron : </span>{{ $vigneron->societe }}</h4>
+                    <h4>Vignerons | <span style="color: #00a65a">Mise à jour des données d'achat du vigneron : </span>{{ $vigneron->societe }}</h4>
                     <p style="font-size: 12px; margin-top: -5px;">(Les champs marqués d'une astérisque
                         <i class="fa fa-fw fa-asterisk text-red"></i>
                         sont obligatoires)
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="box-body">
-                    @include('admin.vignerons.partialsadmin.editvigneron')
+                    @include('admin.vignerons.partialsadmin.miseajourachat')
                 </div>
 
             </div>

@@ -88,6 +88,20 @@
                                     <a href="#marque1">
                                         <i class="fa fa-book" aria-hidden="true"></i>&nbsp;La champagne
                                     </a>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ url('france/champagne/vallee-de-la-marne') }}">
+                                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                Champagnes de la Vallée de la Marne
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('france/champagne/montagne-de-reims-et-cote-des-blancs') }}">
+                                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                Grands crus de la Côte des Blancs
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                             <li class="menuinfo">

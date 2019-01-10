@@ -40,7 +40,9 @@
                             </p>
                             <p style="font-size: 12px; margin-top: -3px;">
                                 Une fois le vigneron créé, pour lui assigner un achat, cliquez sur le bouton :
-                                <span><i class="fa fa-shopping-cart fa-lg"></i></span>
+                                <span><i class="fa fa-shopping-cart fa-lg"></i></span>.&nbsp;
+                                Une fois l'achat créé, vous pouvez modifier les données enregistrées en cliquant sur le bouton :
+                                <span><i class="fa fa-wrench fa-lg"></i></span>
                             </p>
                             <p style="font-size: 12px; margin-top: -3px;">
                                 Pour lui envoyer un email, si le vigneron en possède, cliquez sur le bouton :

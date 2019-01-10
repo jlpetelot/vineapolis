@@ -494,6 +494,16 @@ class DepartementsTableSeeder extends Seeder
                 'created_at' => $date,
                 'updated_at' => $date
             ],
+            [
+                'lieu'       => "Suisse",
+                'created_at' => $date,
+                'updated_at' => $date
+            ],
+            [
+                'lieu'       => "Luxembourg",
+                'created_at' => $date,
+                'updated_at' => $date
+            ],
         ]);
     }
 }

@@ -57,7 +57,7 @@ class VigneronsController extends BackendController
             // puis on pagine
 
             // Carbon::setLocale('fr');
-            $vignerons = Vigneron::latest()
+            $vignerons = Vigneron::orderBy('id', 'desc')
             ->filter(request('term'))
             ->paginate($this->limit);
 
@@ -2789,7 +2789,7 @@ class VigneronsController extends BackendController
                 'aliascommunevinicole'  => "savoie",
                 'localitevinicole'      => "Savoie",
                 'aliaslocalitevinicole' => "savoie",
-                'zoom'                  => 10,
+                'zoom'                  => 9,
                 'latlongregion'         => "45.515,6.02",
                 'reportage'             => $request->reportage,
                 'fiche'                 => $request->fiche,
@@ -2902,8 +2902,8 @@ class VigneronsController extends BackendController
             return $data;
         }
 
-        // Request sans catégorie
-        if ($request->region == "sanscategorie")
+        // Request Suisse
+        if ($request->region == "suisse")
         {
             $data = [
                 'societe'               => $request->societe,
@@ -2916,21 +2916,63 @@ class VigneronsController extends BackendController
                 'sortevin'              => $request->sortevin,
                 'qualitevin'            => $request->qualitevin,
                 'actif'                 => !empty($request->actif) ? 1 : 0,
-                'francevinicole'        => "France",
+                'francevinicole'        => "Suisse",
                 'departement'           => $request->departement,
-                'region'                => 'france',
+                'region'                => 'suisse',
                 'indiceregion'          => '<i class="fa fa-street-view" aria-hidden="true"></i>
                                             <a href="/" data-toggle="tooltip" data-placement="top"
                                                 aria-hidden="true" data-original-title="Voir les parcelles">
-                                            <span style="font-weight:bold">France</span>
+                                            <span style="font-weight:bold">Suisse</span>
                                             </a>',
-                'regionvinicole'        => 'France',
-                'aliasregionvinicole'   => 'france',
-                'communevinicole'       => 'France',
-                'aliascommunevinicole'  => 'france',
-                'localitevinicole'      => 'France',
-                'aliaslocalitevinicole' => 'france',
-                'zoom'                  => NULL,
+                'regionvinicole'        => 'Suisse',
+                'aliasregionvinicole'   => 'suisse',
+                'communevinicole'       => 'Suisse',
+                'aliascommunevinicole'  => 'suisse',
+                'localitevinicole'      => 'Suisse',
+                'aliaslocalitevinicole' => 'suisse',
+                'zoom'                  => 10,
+                'latlongregion'         => NULL,
+                'reportage'             => $request->reportage,
+                'fiche'                 => $request->fiche,
+                'video'                 => $request->video,
+                'paye'                  => !empty($request->paye) ? $request->paye : 0,
+                'user_id'               => !empty($request->user_id) ? $request->user_id : NULL,
+                'created_at'            => Carbon::now(),
+                'updated_at'            => Carbon::now(),
+            ];
+
+            return $data;
+        }
+
+        // Request Luxembourg
+        if ($request->region == "luxembourg")
+        {
+            $data = [
+                'societe'               => $request->societe,
+                'aliassociete'          => $this->enlevertouteslesmerdes($request->societe),
+                'adresse'               => $request->adresse,
+                'telephone'             => $request->telephone,
+                'site'                  => $request->site,
+                'email'                 => $request->email ? $request->email : NULL,
+                'latlong'               => $request->latlong,
+                'sortevin'              => $request->sortevin,
+                'qualitevin'            => $request->qualitevin,
+                'actif'                 => !empty($request->actif) ? 1 : 0,
+                'francevinicole'        => "Luxembourg",
+                'departement'           => $request->departement,
+                'region'                => 'luxembourg',
+                'indiceregion'          => '<i class="fa fa-street-view" aria-hidden="true"></i>
+                                            <a href="/" data-toggle="tooltip" data-placement="top"
+                                                aria-hidden="true" data-original-title="Voir les parcelles">
+                                            <span style="font-weight:bold">Luxembourg</span>
+                                            </a>',
+                'regionvinicole'        => 'Luxembourg',
+                'aliasregionvinicole'   => 'luxembourg',
+                'communevinicole'       => 'Luxembourg',
+                'aliascommunevinicole'  => 'luxembourg',
+                'localitevinicole'      => 'Luxembourg',
+                'aliaslocalitevinicole' => 'luxembourg',
+                'zoom'                  => 10,
                 'latlongregion'         => NULL,
                 'reportage'             => $request->reportage,
                 'fiche'                 => $request->fiche,
@@ -3155,8 +3197,6 @@ class VigneronsController extends BackendController
                 // On créé les données
                 $data = [
                     'fiche'             => $request->fiche,
-                    'created_at'        => $request->created_at,
-                    'duree'             => $request->duree,
                     'imagereportage'    => !empty($fileName) ? $fileName : NULL,
                     'reportage'         => !empty($request->reportage) ? $request->reportage : NULL,
                     'actif'             => 1,
@@ -3168,7 +3208,7 @@ class VigneronsController extends BackendController
                 $vigneron->update($data);
 
                 // On récupère la dernière facture
-                $facture = Facture::orderBy('id', 'desc')->fist();
+                $facture = Facture::orderBy('id', 'desc')->first();
 
                 // On créé la nouvelle date pour le message et l'envoi du mail
                 $nouvelledate = Carbon::now()->addYears($request->duree)->format('d-m-Y');
@@ -3253,12 +3293,10 @@ class VigneronsController extends BackendController
                     'datefacture'       => Carbon::now(),
                     'updated_at'        => Carbon::now()->addYears($request->duree)
                 ]);
-
+              
                 // On créé les données
                 $data = [
                     'fiche'             => $request->fiche,
-                    'created_at'        => $request->created_at,
-                    'duree'             => $request->duree,
                     'actif'             => 1,
                     'paye'              => 1,
                     'product_id'        => $product->id
@@ -3289,6 +3327,75 @@ class VigneronsController extends BackendController
         }
         else return abort('401');
     }
+
+    /**
+     * Méthode miseajourchat () pour mettre à jour les données des achats que l'on a créés pour le vigneron
+     *
+     * @param $id
+     * @return view('admin.vignerons.miseajourachat', compact('vigneron'));
+     **/
+    public function miseajourchat ($id)
+    {
+        // On récupère l'id du logué pour empêcher les petits malins d'utiliser l'admin administrateur
+        if (Auth::user()->role == "administrateur")
+        {
+            $vigneron = Vigneron::where('id', $id)->first();
+
+            return view('admin.vignerons.miseajourachat', compact('vigneron'));
+        }
+        else return abort('401');
+    }
+
+     /**
+     * Méthode updatemiseajourachat() pour stocker les mettre à jour les données des achats que l'on a créés pour le vigneron
+     *
+     * @param $id
+     * @return view('admin.vignerons.admin.updatemiseajourachat', compact('vigneron'));
+     **/
+    public function updatemiseajourachat (Requests\MiseajourAchatVigneronRequest $request, $id)
+    { 
+        // On récupère le vigneron
+        $vigneron = Vigneron::findOrFail($id);
+
+        // Si il y a une image, on téléverse l'image
+        if ($request->hasFile('imagereportage'))
+        {
+            $width = config('cms.image.thumbnail.width');
+            $height = config('cms.image.thumbnail.height');
+
+            $image = $request->file('imagereportage');
+            $fileName = $image->getClientOriginalName();
+            $destination = $this->uploadPath;
+
+            $successUploaded = $image->move($destination, $fileName);
+
+            if ($successUploaded)
+            {
+                $extension      = $image->getClientOriginalExtension();
+                $thumbnail      = str_replace(".{$extension}", "_thumb.{$extension}", $fileName);
+
+                Image::make($destination . '/' . $fileName)
+                    ->resize($width, $height)
+                    ->save($destination . '/thumbs/' . $thumbnail);
+            }
+
+            $imagereportage = $fileName;
+        }
+
+        // On créé les données
+        $data = [
+            'fiche'             => $request->fiche,
+            'reportage'         => $request->reportage,
+            'imagereportage'    => !empty($imagereportage) ? $imagereportage : $vigneron->imagereportage,
+        ];
+
+        // On met à jour le vigneron
+        $vigneron->update($data);
+
+        return redirect(route('admin.all'))->with('message', "Les données d'achat du vigneron $vigneron->societe a bien été mises à jour !!");
+    }
+
+
 
     /**
      * Méthode update () pour mettre à jour un vigneron
@@ -3380,7 +3487,7 @@ class VigneronsController extends BackendController
         {
             // On récupère le vigneron
             $vigneron = Vigneron::findOrFail($id);
-
+        
             // On vérifie si il a au moins un panier
             $paniers = Panier::where('user_id', $vigneron->user_id)->get();
             // Si il y a au moins un panier, il y a aussi des paiements en fonction des paniers
@@ -3434,6 +3541,11 @@ class VigneronsController extends BackendController
                 }
             }
 
+            // Enfin, on supprime le vigneron si celui-ci existe
+            // On regarde si le vigneron est user
+            $user = User::where('id', $vigneron->user_id)->first();
+            if ($user) $user ->delete();
+           
             // Enfin, on supprime le vigneron
             $vigneron->delete();
     

@@ -91,6 +91,18 @@ class UsersTableSeeder extends Seeder
                 'created_at'        => $date,
                 'updated_at'        => $date,
             ],
+            [
+                'name'              => "Cognac Remy Couillebaud",
+                'email'             => "cognac.couillebaud@wanadoo.fr",
+                'role'              => "vigneron",
+                'imageprofil'       => "avatar-neutre.jpg",
+                'password'          => bcrypt('1234567'),
+                // 'panier_id'         => NULL,
+                'api_token'         => bcrypt(rand(1,10)),
+                'remember_token'    => bcrypt(rand(1,10)),
+                'created_at'        => $date,
+                'updated_at'        => $date,
+            ],
         ]);
     }
 }

@@ -47,6 +47,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <td>ID</td>
                     <td>Société</td>
                     <td>Adresse</td>
                     <td>Email</td>
@@ -64,6 +65,7 @@
                 <tbody>
                 @foreach($vignerons as $vigneron)
                     <tr>
+                        <td>{{ $vigneron->id }}</td>
                         <td>
                             <a href="{{ route('admin.edit', $vigneron->id) }}" style="color:#333">
                                 {{ $vigneron->societe }}
@@ -123,6 +125,12 @@
                                 <a href="{{ route('admin.creerachat', $vigneron->id) }}" class="btn btn-xs btn-default"
                                     data-toggle="tooltip" title="Créer un achat">
                                     <i class="fa fa-shopping-cart fa-lg"></i>
+                                </a>
+                            @endif
+                            @if($vigneron->paye === 1)
+                                <a href="{{ route('admin.miseajourchat', $vigneron->id) }}" class="btn btn-xs btn-default"
+                                    data-toggle="tooltip" title="Mise à jour données après achat">
+                                    <i class="fa fa-wrench fa-lg"></i>
                                 </a>
                             @endif
                             @if($vigneron->user_id == NULL)

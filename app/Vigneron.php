@@ -9,6 +9,9 @@ class Vigneron extends Model
 {
     use Searchable;
 
+    // On met cela pour éviter les erreurs du type : Call to a member function format() on string
+    protected $dates = ['datefacture', 'created_at', 'updated_at'];
+
     protected $fillable = [
         'societe',
         'aliassociete',
@@ -32,16 +35,17 @@ class Vigneron extends Model
         'aliaslocalitevinicole',
         'localitevinicoleactif',
         'zoom',
+        'duree',
         'latlongregion',
         'imagereportage',
         'reportage',
-        'visuelfiche',
         'fiche',
         'video',
         'product_id',
         'paye',
         'user_id',
         'created_at',
+        'datefacture',
         'updated_at'
     ];
 

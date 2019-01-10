@@ -271,6 +271,8 @@ Route::prefix('admin')->group(function ()
     Route::get('/edit/{id}', 'Backend\VigneronsController@edit')->name('admin.edit');
     Route::get('/creerachat/{id}', 'Backend\VigneronsController@creerachat')->name('admin.creerachat');
     Route::put('/updateachat/{id}', 'Backend\VigneronsController@updateachat')->name('admin.updateachat');
+    Route::get('/miseajourchat/{id}', 'Backend\VigneronsController@miseajourchat')->name('admin.miseajourchat');
+    Route::put('/updatemiseajourachat/{id}', 'Backend\VigneronsController@updatemiseajourachat')->name('admin.updatemiseajourachat');
     Route::put('/update/{id}', 'Backend\VigneronsController@update')->name('admin.update');
     Route::get('/editimage/{id}', 'Backend\VigneronsController@editimage')->name('admin.editimage');
     Route::put('/updateimage/{id}', 'Backend\VigneronsController@updateimage')->name('admin.updateimage');

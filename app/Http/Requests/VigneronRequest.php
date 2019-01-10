@@ -28,11 +28,11 @@ class VigneronRequest extends FormRequest
         return [
             'societe'           => 'required',
             'adresse'           => 'required',
-            'email'             => 'email',
+            // 'email'             => 'email',
             'latlong'           => 'required',
             'sortevin'          => 'required',
-            // 'actif'             => 'required',
             'departement'       => 'required',
+            'region'            => 'required',
             'created_at'        => 'required',
         ];
     }

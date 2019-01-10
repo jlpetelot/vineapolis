@@ -28,6 +28,7 @@ class VigneronupdateRequest extends FormRequest
             'adresse'           => 'required',
             'latlong'           => 'required',
             'sortevin'          => 'required',
+            'region'            => 'required',
 //            'qualitevin'        => 'required',
 //            'departement'       => 'required',
 //            'zoom'              => 'required',
