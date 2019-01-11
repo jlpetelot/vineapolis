@@ -30,6 +30,11 @@ class SortedevinsTableSeeder extends Seeder
                 'updated_at' => $date
             ],
             [
+                'sorte'      => "rosé",
+                'created_at' => $date,
+                'updated_at' => $date
+            ],
+            [
                 'sorte'      => "rouge blanc",
                 'created_at' => $date,
                 'updated_at' => $date

@@ -21,7 +21,7 @@
             <li style="list-style-type: none">
                 <a href="{{ route('admin.utilisateurs') }}">
                     <i class="fa fa-bars text-blue"></i>
-                    <span style="color: #444;">Gérer les utilisateurs</span>
+                    <span style="color: #444;">Gérer les administrateurs</span>
                 </a>
             </li>
             @endif
@@ -32,9 +32,21 @@
                 </a>
             </li>
             <li style="list-style-type: none">
-                <a href="#}">
+                <a href="{{ route('admin.annonceurs') }}">
                     <i class="fa fa-bars text-yellow"></i>
                     <span style="color: #444;">Gérer les annonceurs</span>
+                </a>
+            </li>
+            <li style="list-style-type: none">
+                <a href="{{ route('factures.index') }}">
+                    <i class="fa fa-file-pdf-o text-blue"></i>
+                    <span style="color: #444;">Gérer les factures</span>
+                </a>
+            </li>
+            <li style="list-style-type: none">
+                <a href="{{ route('admin.messages') }}">
+                    <i class="fa fa-envelope text-blue"></i>
+                    <span style="color: #444;">Gérer les messages</span>
                 </a>
             </li>
             <li style="list-style-type: none">

@@ -40,11 +40,14 @@
                                                         <i class="fa fa-glass fa-lg" style="color:#990033" aria-hidden="true"></i>
                                                         <i class="fa fa-glass fa-lg" style="color:#FFCE33" aria-hidden="true"></i>
                                                     </span>
+                                                    <span v-if="result.sortevin === 'rosé'">
+                                                        <i class="fa fa-glass" style="color:#ff00aa" aria-hidden="true"></i>
+                                                    </span>
                                                      <span v-if="result.sortevin === 'rouge rosé'">
                                                         <i class="fa fa-glass fa-lg" style="color:#990033" aria-hidden="true"></i>
                                                         <i class="fa fa-glass fa-lg" style="color:#ff00aa" aria-hidden="true"></i>
                                                     </span>
-                                                    <span v-if="result.sortevin === 'blanc rosé'">
+                                                                                                       <span v-if="result.sortevin === 'blanc rosé'">
                                                         <i class="fa fa-glass fa-lg" style="color:#FFCE33" aria-hidden="true"></i>
                                                         <i class="fa fa-glass fa-lg" style="color:#ff00aa" aria-hidden="true"></i>
                                                     </span>

@@ -12,6 +12,8 @@
                             <i class="fa fa-glass" style="color:#990033" aria-hidden="true"></i>
                         @elseif ($vin->sortevin === 'blanc')
                             <i class="fa fa-glass" style="color:#FFCE33" aria-hidden="true"></i>
+                        @elseif ($vin->sortevin === 'rosé')
+                            <i class="fa fa-glass" style="color:#ff00aa" aria-hidden="true"></i>
                         @elseif ($vin->sortevin === 'rouge blanc')
                             <i class="fa fa-glass" style="color:#990033" aria-hidden="true"></i>
                             <i class="fa fa-glass" style="color:#FFCE33" aria-hidden="true"></i>

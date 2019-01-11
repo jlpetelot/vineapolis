@@ -2742,7 +2742,7 @@ class VigneronsController extends BackendController
                 'aliascommunevinicole'  => "provence",
                 'localitevinicole'      => "Provence",
                 'aliaslocalitevinicole' => "provence",
-                'zoom'                  => 9,
+                'zoom'                  => 10,
                 'latlongregion'         => "43.175,5.77",
                 'reportage'             => $request->reportage,
                 'fiche'                 => $request->fiche,
@@ -2789,7 +2789,7 @@ class VigneronsController extends BackendController
                 'aliascommunevinicole'  => "savoie",
                 'localitevinicole'      => "Savoie",
                 'aliaslocalitevinicole' => "savoie",
-                'zoom'                  => 9,
+                'zoom'                  => 8,
                 'latlongregion'         => "45.515,6.02",
                 'reportage'             => $request->reportage,
                 'fiche'                 => $request->fiche,
@@ -3415,6 +3415,48 @@ class VigneronsController extends BackendController
             $vigneron->update($data);
     
             return redirect(route('admin.all'))->with('message', "Le vigneron ". $data['societe'] . " a bien été mis à jour");
+        }
+        else return abort('401');
+    }
+
+    /**
+     * Méthode vigneronactif () active le vignnron
+     *
+     * @param $id
+     * @return rreturn redirect(route('admin.all'))->with('message', "Le vigneron ". $data['societe'] . " a bien été activé");
+     **/
+    public function vigneronactif ($id)
+    {
+        if (Auth::user()->role == "administrateur")
+        {
+            $vigneron = Vigneron::findOrFail($id);
+
+            $data['actif'] = 1;
+    
+            $vigneron->update($data);
+    
+            return redirect(route('admin.all'))->with('message', "Le vigneron ". $vigneron->societe . " a bien été activé !");
+        }
+        else return abort('401');
+    }
+
+    /**
+     * Méthode vigneroninactif () désactive le vignnron
+     *
+     * @param $id
+     * @return rreturn redirect(route('admin.all'))->with('message', "Le vigneron ". $data['societe'] . " a bien été activé");
+     **/
+    public function vigneroninactif ($id)
+    {
+        if (Auth::user()->role == "administrateur")
+        {
+            $vigneron = Vigneron::findOrFail($id);
+
+            $data['actif'] = 0;
+    
+            $vigneron->update($data);
+    
+            return redirect(route('admin.all'))->with('message', "Le vigneron ". $vigneron->societe . " a bien été désactivé !");
         }
         else return abort('401');
     }

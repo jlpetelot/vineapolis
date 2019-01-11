@@ -153,7 +153,7 @@
     <div class="form-group">
         <div class="col-xs-2 control-label">
             {!! Form::label('actif', 'Vigneron actif / inactif&nbsp;') !!}
-            {!! Form::checkbox('actif', 1, false) !!}
+            {!! Form::checkbox('actif', 1, true) !!}
         </div>
     </div>
 </div>
@@ -269,7 +269,7 @@
                 'separateur15' 						    => '============================================================',
                 'lorraine' 								=> 'Lorraine',
                 'separateur16' 						    => '============================================================',
-                'Provence' 								=> 'Provence',
+                'provence' 								=> 'Provence',
                 'separateur17' 						    => '============================================================',
                 'savoie' 								=> 'Savoie',
                 'separateur18' 						    => '============================================================',

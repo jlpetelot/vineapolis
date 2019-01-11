@@ -273,6 +273,8 @@ Route::prefix('admin')->group(function ()
     Route::get('/creerachat/{id}', 'Backend\VigneronsController@creerachat')->name('admin.creerachat');
     Route::put('/updateachat/{id}', 'Backend\VigneronsController@updateachat')->name('admin.updateachat');
     Route::get('/miseajourchat/{id}', 'Backend\VigneronsController@miseajourchat')->name('admin.miseajourchat');
+    Route::get('/vigneronactif/{id}', 'Backend\VigneronsController@vigneronactif')->name('admin.vigneronactif');
+    Route::get('/vigneroninactif/{id}', 'Backend\VigneronsController@vigneroninactif')->name('admin.vigneroninactif');
     Route::put('/updatemiseajourachat/{id}', 'Backend\VigneronsController@updatemiseajourachat')->name('admin.updatemiseajourachat');
     Route::put('/update/{id}', 'Backend\VigneronsController@update')->name('admin.update');
     Route::get('/editimage/{id}', 'Backend\VigneronsController@editimage')->name('admin.editimage');

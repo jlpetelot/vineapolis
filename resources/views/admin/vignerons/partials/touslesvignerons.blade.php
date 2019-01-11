@@ -109,7 +109,16 @@
                                 {{ $vigneron->dateFormattedUpdate() }}
                             </abbr>
                         </td>
-                        <td>{!! $vigneron->active() !!}</td>
+                        @if ($vigneron->actif === 1)
+                            <td>
+                                <a href="{{ route('admin.vigneroninactif', $vigneron->id) }}" class="btn label label-success">Oui</a>
+                            </td>
+                        @endif
+                        @if ($vigneron->actif === 0)
+                            <td>
+                                <a href="{{ route('admin.vigneronactif', $vigneron->id) }}" class="btn label label-default">Non</a>
+                            </td>
+                        @endif
                         @if ($vigneron->paye === 0 || $vigneron->paye == NULL)
                             <td><span class="label label-default">Non</span></td>
                         @elseif ($vigneron->paye === 1)
